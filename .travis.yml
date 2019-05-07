@@ -1,0 +1,20 @@
+dist: xenial
+language: minimal
+git:
+  depth: false
+  submodules: false
+cache: 
+  directories: [$TRAVIS_BUILD_DIR/_bookdown_files/, $HOME/.local/lib/R/]
+
+script: 
+  - declare input_git=$TRAVIS_BUILD_DIR
+  - declare repo_git="-b zhuoer-thesis https://$GITHUB_PAT@github.com/dongzhuoer/bookdown.dongzhuoer.com.git"
+  - declare rmd_dir=""
+  - declare system_dep="fonts-wqy-zenhei"   
+  - declare install_pkg="remotes::update_packages(c('magrittr', 'tidyverse', 'cowplot'))"
+  - declare render_args=""
+  - declare zhuoerdown=false
+  - wget https://raw.githubusercontent.com/dongzhuoer/zhuoerdown/master/inst/travis-script.sh && bash travis-script.sh
+
+notifications:
+  email: false

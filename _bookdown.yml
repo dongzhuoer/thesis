@@ -1,0 +1,11 @@
+book_filename: thesis
+output_dir: gitbook
+delete_merged_file: yes
+new_session: yes
+edit: https://github.com/dongzhuoer/nutshell/edit/master/%s
+#before_chapter_script: _common.R
+language:
+  label:
+    fig: '图 '
+rmd_files:
+  - thesis.Rmd
