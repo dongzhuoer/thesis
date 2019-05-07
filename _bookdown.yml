@@ -2,7 +2,7 @@ book_filename: thesis
 output_dir: gitbook
 delete_merged_file: yes
 new_session: yes
-edit: https://github.com/dongzhuoer/nutshell/edit/master/%s
+edit: https://github.com/dongzhuoer/thesis/edit/bookdown/%s
 #before_chapter_script: _common.R
 language:
   label:

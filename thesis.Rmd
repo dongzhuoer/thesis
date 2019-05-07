@@ -5,6 +5,7 @@ date: "2018-06-04"
 knit: "bookdown::render_book"
 bibliography: ["thesis.bib"]
 link-citations: true
+github-repo: dongzhuoer/thesis
 output: 
     bookdown::gitbook:
         dev: png
