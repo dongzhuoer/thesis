@@ -10,8 +10,9 @@ cache:
 script: 
   - export input_git=$TRAVIS_BUILD_DIR
   - export repo_git="-b zhuoer-thesis https://$GITHUB_PAT@github.com/dongzhuoer/bookdown.dongzhuoer.com.git"
-  - export rmd_dir=""
-  - export system_dep="fonts-wqy-zenhei"   
+  - export rmd_dir=.
+  - export root_command="apt update && apt -y install fonts-wqy-zenhei"   
+  - export user_command=""
   - export install_pkg="remotes::update_packages(c('magrittr', 'tidyverse', 'cowplot'))"
   - export render_args=""
   - export zhuoerdown=false
