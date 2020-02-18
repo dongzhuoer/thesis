@@ -1,0 +1,39 @@
+dist: bionic
+language: minimal
+cache: 
+  directories: $HOME/.local/lib/R/site-library
+jobs: 
+  include:
+    - stage: build
+      name: place holder  
+      script: skip  # without this toy job, comment first job would cuase error
+    - name: figure.Rmd
+      script:
+        - docker run -dt --name rlang0 -w /root -e CONTINUOUS_INTEGRATION=$CONTINUOUS_INTEGRATION -v $HOME/.local/lib/R/site-library:/usr/local/lib/R/site-library dongzhuoer/rlang:rmarkdown 2> /dev/null
+        - docker exec rlang0 bash -c "apt update && apt install -y fonts-wqy-zenhei"
+        - docker exec rlang0 R -e "remotes::update_packages('prettydoc')"
+        - docker cp ./. rlang0:/root
+        - docker exec -e GITHUB_PAT=$GITHUB_PAT rlang0 Rscript -e "rmarkdown::render('figure.Rmd', output_format = 'prettydoc::html_pretty')"
+        - docker exec rlang0 test -f figure.html || exit 1
+        - docker exec rlang0 chown -R `id -u`:`id -g` /usr/local/lib/R/site-library
+        - docker exec rlang0 bash -c "apt update && apt install -y curl"
+        - docker exec rlang0 curl -o upload-gitlab.sh https://raw.githubusercontent.com/dongzhuoer/gist/master/upload-gitlab.sh
+        - docker exec -e GITLAB_TOKEN=$GITLAB_TOKEN rlang0 bash upload-gitlab.sh 16106600 figure.html thesis%2Ffigure.html
+    - name: bookdown
+      script:
+        - docker run -dt --name rlang0 -w /root -v $HOME/.local/lib/R/site-library:/usr/local/lib/R/site-library dongzhuoer/rlang:zhuoerdown 2> /dev/null
+        - docker exec rlang0 bash -c 'echo -e "[user]\n\tname = Zhuoer Dong\n\temail = dongzhuoer@mail.nankai.edu.cn\n" > .gitconfig'
+        - docker cp bookdown/. rlang0:/root
+        - docker exec rlang0 bash -c "apt update && apt install -y fonts-wqy-zenhei"
+        - docker exec rlang0 Rscript -e "remotes::install_local(force = TRUE)"
+        - docker exec rlang0 Rscript -e "bookdown::render_book('', output_dir = '/output')"
+        - docker exec rlang0 test -f /output/index.html || exit 1
+        - docker exec rlang0 chown -R `id -u`:`id -g` /usr/local/lib/R/site-library
+        - docker exec rlang0 git clone --depth 1 -b dongzhuoer/thesis https://gitlab-ci-token:$GITLAB_TOKEN@gitlab.com/dongzhuoer/bookdown.dongzhuoer.com.git /git 
+        - docker exec rlang0 mv /git/.git /output
+        - docker exec rlang0 rm -rf /git
+        - docker exec -w /output rlang0 git rm -r --cached .
+        - docker exec -w /output rlang0 git add --all
+        - docker exec -w /output rlang0 git commit -m "Travis build at `date '+%Y-%m-%d %H:%M:%S'`" --allow-empty 
+        - docker exec -w /output rlang0 git push
+        - wget https://github.com/dongzhuoer/build-website/raw/master/trigger.sh && bash -x trigger.sh bookdown

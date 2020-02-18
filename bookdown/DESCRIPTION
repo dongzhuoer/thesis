@@ -1,0 +1,8 @@
+Package: dongzhuoer.thesis
+Type: Book
+Title: Undergraduate thesis
+Version: 0.0.1
+Imports: 
+    magrittr,
+    tidyverse,
+    cowplot

@@ -1,0 +1,10 @@
+book_filename: thesis
+output_dir: gitbook
+delete_merged_file: yes
+new_session: yes
+edit: https://github.com/dongzhuoer/thesis/edit/bookdown/%s
+language:
+  label:
+    fig: '图 '
+rmd_files:
+  - index.Rmd
