@@ -1,0 +1,64 @@
+
+---
+title: "[Zhuoer Dong's undergraduate thesis](https://dongzhuoer.github.io/thesis) <a href='https://github.com/dongzhuoer/thesis'><span class='icon icon-github-circled'></span></a>"
+output:
+  prettydoc::html_pretty: default
+---
+
+<style>
+section.main-content {
+    max-width: 100rem
+}
+span.icon {
+    font-size: 3rem;
+    line-height: 1.1;
+}
+h1.project-name {
+    font-size: 2rem;
+}
+h1.project-name > a {
+    color: #fff;
+    text-decoration: none;
+}
+ul > li > p > a.name {
+    font-size: 1.5rem;
+}
+/* ------------------------- http://fontello.com/ --------------------------- */ 
+@font-face {
+  font-family: 'fontello';
+  src: url('data:application/octet-stream;base64,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') format('woff');
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+} 
+.icon-github-circled:before { content: '\f09b'; } /* '' */
+.icon-gitlab:before { content: '\f296'; } /* '' */
+</style>
+
+```{r include=FALSE}
+button <- function(repo) {
+    paste0("<a href='https://github.com/dongzhuoer/thesis/r-lib/", repo, "'><span class='icon icon-github-circled'></span></a>")
+}
+package <- function(repo) {
+    paste0(button(repo), " <a class='name' href='", repo, "'>", repo, "</a>")
+}
+```
+
+- read [full text](gitbook) and [figures](figure.html)
+
+- `r package("qGSEA")`
+  [GSEA](http://software.broadinstitute.org/gsea/index.jsp) is a powerful tool, but preparing its input files, escpecially from GSE raw data, is a painful process. I know that from very personal experience, that's why I develop thistool. You just need a GSE accession and qGSEA would take care of everything else for you.
+
+- `r package("rGEO")`
+  This package contains functions to read GSE raw data and returns a tidy format. It's especially useful for chip annotation file, the format of which is really in a messy. You just need to provide the raw data file and it will give you a nice table containing probes and [HUGO](https://www.genenames.org/) gene symbols.
+
+- `r package("hgnc")`
+  This package serves a utility for [rGEO](https://github.com/dongzhuoer/thesis/r-lib/rGEO).  It convert a probe-to-geneID map to a probe-to-symbol map. (here **geneID**  refers to entrez gene ID, ensemble gene ID, RefSeq accession, etc.)  
+
+- `r package("rGEO.data")`
+  This package contains several big data and functions to create them from GEO (Gene Expression Omnibus). They are meta data of GPL and GSE database, and of all platforms.  It's used in the testing of [rGEO](https://github.com/dongzhuoer/thesis/r-lib/rGEO).
+
+------------------------------
+
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png){data-external="1"}](http://creativecommons.org/licenses/by-nc-sa/4.0/)  
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

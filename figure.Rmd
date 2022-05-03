@@ -7,16 +7,11 @@ output:
   prettydoc::html_pretty:
     toc: yes
     number_sections: yes
-  md_document:
-    variant: markdown_github
-    toc: yes
-editor_options: 
-  chunk_output_type: inline
 ---
 
 ```{r knitr-setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = '#>')
-knitr::opts_chunk$set(fig.width = 6, fig.height = 4.5, fig.path = 'image/ppt/') 
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4.5, fig.path = 'figure/ppt/') 
 ```
 
 ```{css echo=FALSE}
@@ -26,30 +21,19 @@ p > img {
 }
 ```
 
-```{r echo=FALSE, results='asis', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == "markdown_github"}
-# github_document doesn't support toc, md_documet discard yaml metadata, so I can only do it myself
-cat('<h1 align="center">', rmarkdown::metadata$title,'</h1>\n')
-cat('<p align="center">\n', rmarkdown::metadata$author,'</p>\n')
-cat('<p align="center">\n', rmarkdown::metadata$date,'</p>\n')
-cat('---------------\n')
-```
 
-
-
-[source code](https://github.com/dongzhuoer/thesis/blob/master/figure.Rmd) --|-- 
-[correct output](https://github.com/dongzhuoer/thesis/blob/master/figure.md) (minor revision on 2019-12-27) --|-- 
-[latest output](https://latest-output.dongzhuoer.com/thesis/figure.html)
-`r if(knitr::opts_knit$get('rmarkdown.pandoc.to') == "html") paste0("(", Sys.time(), ")")`
 
 ```{r install-pkg, eval=FALSE}
-## install needed R packages
+# install needed R packages
 remotes::update_packages(c("magrittr", "dplyr", "ggplot2", "stringr", "WriteXLS"), upgrade = TRUE)
-remotes::install_github(c("dongzhuoer/qGSEA", "dongzhuoer/rGEO"), upgrade = TRUE)
-```
-```{r install-pkg, include=FALSE, eval=Sys.getenv('CONTINUOUS_INTEGRATION') == 'true'}
+remotes::install_github(c("dongzhuoer/thesis/r-lib/qGSEA", "dongzhuoer/thesis/r-lib/rGEO"), upgrade = TRUE)
 ```
 
-Refer to [here](https://github.com/dongzhuoer/thesis/blob/master/readme.md#figures) to reproduce this work.
+You can run `Rscript -e "rmarkdown::render('index.Rmd')"` in [thesis repo](https://github.com/dongzhuoer/thesis) to reproduce this.
+
+Remember to install WenQuanYi Zen Hei font (`apt install fonts-wqy-zenhei`) for proper rendering of Chinese characters in plot.
+
+
 
 
 
@@ -88,7 +72,7 @@ pie_plot <- function(df, text_data = . %>% {.}) {
 
 
 
-# PPT
+# Figures used in presentation
 
 
 
@@ -210,9 +194,7 @@ Then open `data-raw/mapping-probe-to-symbol.xlsx` and take screenshots.
 
 
 
-## 上述工具 ^[rGEO] 的成效
-
-
+## [rGEO](https://dongzhuoer.github.io/thesis/rGEO) 的成效
 
 Here I use cached result on 2018-05-22.
 
@@ -260,11 +242,11 @@ Open following links and take screenshots:
 
 
 
-# scripts generating data used in Word
+# Figures used in thesis document
 
 
 
-## [图 4](https://bookdown.dongzhuoer.com/zhuoer/thesis/result.html#fig:rGEO-performance): rGEO的表现
+## [图 4](https://dongzhuoer.github.io/thesis/gitbook/result.html#fig:rGEO-performance): rGEO的表现
 
 Again, consult me for how to get `gds_result.txt`. 
 
@@ -318,7 +300,7 @@ gse_sum <- geo %>% filter(species == 'Homo sapiens', str_detect(accession, 'GSE'
 
 
 
-## [图 6](https://bookdown.dongzhuoer.com/zhuoer/thesis/result.html#fig:significant-geneset-per-dataset): 各个集合在不同数据集中的整体表现
+## [图 6](https://dongzhuoer.github.io/thesis/gitbook/result.html#fig:significant-geneset-per-dataset): 各个集合在不同数据集中的整体表现
 
 Let's see how to get the plot, I will show it step by step because the final plot is not so straight-forward.
 
@@ -421,9 +403,3 @@ Epilogue: the trend remains same regardless significant level.
 1. `FDR < 0.1` is still recognizable
 1. `FDR < 0.05` is hard to distinguish `c7.all` from `c1.all` at first glance
 1. `FDR < 0.01` you have to find the difference carefully. 
-
-
-
------------------------
-[![Creative Commons License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)  
-This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)
