@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>三、实验数据与结果 | 南开大学本科生毕业论文（设计）</title>
+  <meta name="description" content="三、实验数据与结果 | 南开大学本科生毕业论文（设计）" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="三、实验数据与结果 | 南开大学本科生毕业论文（设计）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="dongzhuoer/thesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="三、实验数据与结果 | 南开大学本科生毕业论文（设计）" />
+  
+  
+  
+
+<meta name="author" content="Zhuoer Dong" />
+
+
+<meta name="date" content="2018-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="material-method.html"/>
+<link rel="next" href="discuss.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="bookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>封面</a></li>
+<li class="chapter" data-level="" data-path="abstract-cn.html"><a href="abstract-cn.html"><i class="fa fa-check"></i>摘 要</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>一、前言和文献综述</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GEO"><i class="fa fa-check"></i>（一）GEO数据库</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GSEA"><i class="fa fa-check"></i>（二）GSEA及其发展</a></li>
+<li><a href="preface.html#LEM4">（三）<em>LEM4</em> 的功能</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html"><i class="fa fa-check"></i>二、材料与方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#data-software"><i class="fa fa-check"></i>（一）实验数据与软件</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#method"><i class="fa fa-check"></i>（二）实验方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#rGEO"><i class="fa fa-check"></i>1. rGEO算法实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#qGSEA"><i class="fa fa-check"></i>2. qGSEA软件实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#GSEA-and-integration"><i class="fa fa-check"></i>3. GSEA及其结果的整合</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#diagram"><i class="fa fa-check"></i>（三）实验流程图</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i>三、实验数据与结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#probe2symbol"><i class="fa fa-check"></i>（一）rGEO——将探针对应到 HUGO 基因符号</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#quick-run-GSEA"><i class="fa fa-check"></i>（二）qGSEA——快捷运行 GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#GSEA-883-dataset"><i class="fa fa-check"></i>（三）在883项数据集中运行GSEA并整合结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#run-GSEA"><i class="fa fa-check"></i>1. 运行GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#integrate-result"><i class="fa fa-check"></i>2. 整体分析GSEA的结果</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#how-filter-geneset"><i class="fa fa-check"></i>3. 探索筛选基因集的方法</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#filter-and-explain"><i class="fa fa-check"></i>4. 筛选最终结果并分析其生物学意义</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html"><i class="fa fa-check"></i>四、讨论与分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#easy-use"><i class="fa fa-check"></i>（一）进一步增强易用性</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#more-platform"><i class="fa fa-check"></i>（二）支持更多的平台表格</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#merit-of-integration"><i class="fa fa-check"></i>（三）整合多项数据集的GSEA结果的优势</a></li>
+<li><a href="discuss.html#better-filter">（四）更好地筛选与 <em>LEM4</em> 最相关的基因集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附 录</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-plot"><i class="fa fa-check"></i>（一）附图</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-table"><i class="fa fa-check"></i>（二）附表</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i>致 谢</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">南开大学本科生毕业论文（设计）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="result" class="section level1">
+<h1>三、实验数据与结果</h1>
+<div id="probe2symbol" class="section level2">
+<h2>（一）rGEO——将探针对应到 HUGO 基因符号</h2>
+<p>我们实现了将 GSE 数据集中的探针统一地对应到 HUGO 基因符号的 R 包——rGEO。截至 2018 年 5 月 22 日，GSE中物种为人类的平台表格一共有 4 868种，我们获取了所有平台表格的元信息，然后用我们开发的R包进行处理，结果如图 <a href="result.html#fig:rGEO-performance">4</a>-A 所示。由于 GSEA 自带的基因集数据库——MSigDB——主要用于分析蛋白质编码基因，我们暂不考虑支持非编码 RNA 的基因芯片。对于五分之一左右的平台表格，rGEO 无法直接将探针对应到基因，但是可以提取出探针序列信息，在后续的改进中可以考虑通过 BLAST 到人类基因组来确定探针所对应的基因。另有六分之一左右的平台表格完全无法处理，其分为两种情况，一是根本没有任何可利用信息，一是无法通过编程来批量提取出可用信息。在数据处理过程中，我们注意到不同的平台表格在 GSE 数据集中的使用频率变异较大，于是我们以数据集为单位分析了 rGEO 的表现（每一个数据集均有一个唯一的平台表格与之对应），结果如图 <a href="result.html#fig:rGEO-performance">4</a>-B 所示（为了避免重复，我们舍弃了 Super Series，因为其包含的子数据集均已被纳入分析范围）。可以看出，我们开发的 R 包可以处理 GEO 中绝大部分物种为人类的数据集。</p>
+<div class="figure"><span id="fig:rGEO-performance"></span>
+<img src="index_files/figure-html/rGEO-performance-1.png" alt="rGEO 的表现" width="960" />
+<p class="caption">
+图 4: rGEO 的表现
+</p>
+</div>
+<p>A. 对所有物种为人类的平台表格的处理情况。B. 对所有物种为人类的数据集的处理情况。</p>
+</div>
+<div id="quick-run-GSEA" class="section level2">
+<h2>（二）qGSEA——快捷运行 GSEA</h2>
+<p>在前文提到的 R 包的基础上，我们开发出了一个简单易用的网页应用 qGSEA，如图S1所示。其拥有用户友好的交互式界面，能够很方便地将 GSE 数据集的原始文件转换为 javaGSEA 需要的输入文件，从而使用户能快捷地使用 GSEA 这一强大的分析工具。qGSEA 有两种运行模式：A 和 B，如图 <a href="result.html#fig:qGSEA-usage">5</a> 所示。</p>
+<div class="figure"><span id="fig:qGSEA-usage"></span>
+<img src="qGSEA-usage.jpeg" alt="qGSEA 的使用方法" width="100%" />
+<p class="caption">
+图 5: qGSEA 的使用方法
+</p>
+</div>
+<p>A. 模式 A 的操作步骤。B. 模式 B-1 的操作步骤。C. 模式 B-2 的操作步骤。</p>
+<p>对于模式 A，用户需要输入 GSE accession，然后选择存放输出文件的文件夹，最后点击 <code>Run</code>，即可在之前选择的文件夹中得到符合 javaGSEA 规范的输入文件，如图 <a href="result.html#fig:qGSEA-usage">5</a>-A 所示。在实际使用过程中，我们发现从 NCBI 下载数据十分缓慢，当文件较大时需要耗费较长时间，而且网络连接非常不稳定，有时甚至会完全卡死。基于这种情况，我们提供了另一种运行方法——模式 B——先由用户下载 GSE 的原始数据文件，然后再由这些文件得到 javaGSEA 需要的输入文件。</p>
+<p>模式 B 分为 B-1、B-2 两步。在 B-1 中，用户需要输入 GSE accession，然后单击下方的两个按钮即可下载 GSE 的原始数据文件——matrix 文件和 SOFT 文件，如图 <a href="result.html#fig:qGSEA-usage">5</a>-B所示。此时文件是通过浏览器来下载，用户可以查看下载进度，在下载失败后重新下载，或者复制下载链接之后通过其它方式来下载（比如使用专门的下载软件，或者等到网络环境较好的时候再下载）。不管通过何种方式，在用户得到 GSE 的原始数据文件之后，即可运行 B-2。用户仍需输入 GSE accession（如果在 B-1中已经输入过，则此时会被保留，无需重复输入），然后分别选中下载好的 matrix 文件和 SOFT 文件，以及输出文件夹，最后点击 <code>Run</code> 即可得到与模式A一样的结果，如图 <a href="result.html#fig:qGSEA-usage">5</a>-C所示。</p>
+<p>除了上述提到的必要步骤之外，在 A 和 B-2 中还提供了一项可选步骤。当用户希望使用 GSEA 筛选出与某一感兴趣的基因的表达相关联的基因集时，可以在最下方的框中输入该基因的 HUGO 基因符号。这样 qGSEA 就会额外生成一个 <code>.cls</code> 文件，在 javaGSEA 中该文件用于提供表型标签。</p>
+<p>运行完qGSEA之后的任务就十分简单明了了，用户只需要把生成的文件拖拽到 javaGSEA 中，然后按照其指示即可得到分析结果。</p>
+<p>qGSEA 的一大亮点是，在软件运行的整个过程中都会对用户的错误给出简短、清晰的提示，当用户修正该错误后提示会立即消失，在用户犯了新的错误后又会给出新的提示，从而引导用户一步一步达成运行软件的目的，如图 S2 所示。这些提示进一步增强了 qGSEA 的易用性，即使是第一次接触 qGSEA 的用户，也能够在指示的引导下正确地运行软件。而且在用户修正所有的错误之前，qGSEA 会拒绝运行，这样就大大减少了产生错误输出的可能性。</p>
+</div>
+<div id="GSEA-883-dataset" class="section level2">
+<h2>（三）在883项数据集中运行GSEA并整合结果</h2>
+<div id="run-GSEA" class="section level3">
+<h3>1. 运行GSEA</h3>
+<p>我们从 GEO 数据库获取了 1 187项人类乳腺癌或卵巢癌相关的数据集，然后使用 qGSEA 从原始数据文件生成 javaGSEA 输入文件。其中有 21 项无法被 qGSEA 识别，剩下的 1 166项数据集中只有 883 项包含了 <em>LEM4</em> 基因，我们在这些数据中进行了 GSEA。</p>
+<p>由于我们使用重排表型（1 000次）的方式计算 <em>P</em> 值，为了实现足够的分辨率，每一数据集样本数至少为 7。我们发现样本数多的数据集倾向于产生更多统计显著的结果（数据未显示），这可能是因为大样本的数据集有着更高的信噪比。考虑到以上两点，我们仅选取样本数超过某一阈值的数据集的结果进行后续分析，但是阈值设置过高又会导致可用的数据集太少，以至于损失过多有用信息。权衡利弊之后，我们选取样本数超过 100（包含 100）的数据集（共 108 项）。</p>
+</div>
+<div id="integrate-result" class="section level3">
+<h3>2. 整体分析GSEA的结果</h3>
+<p>我们分析了不同集合整体的情况，如图 <a href="result.html#fig:significant-geneset-per-dataset">6</a> 所示。我们认为 c3.mir、c4.cgn 和 c7这3个集合表现比较奇怪。在正常情况下，每个数据集中应该只有一小部分统计显著的基因集，在其它集合中，绝大部分数据集都与该情况相符。但是在 c3.mir、c4.cgn 和 c7 中，有相当一部分数据集都给出了很多（甚至绝大部分都是）统计显著的基因集。我们认为造成该现象的原因有两种，一是该集合中的基因集组成不合理，容易产生假阳性；一是 <em>LEM4</em> 确实能通过某种生物学机制影响到该集合中的大部分基因集。针对 c3.mir，LEM4 部分定位于内质网上，在维持内质网的形态中起到重要的作用，而内质网又是 microRNA 加工的重要场所，我们推测 LEM4 可能会通过影响内质网的稳定性来影响 microRNA 的加工，从而影响 c3.mir 中的大部分基因集。针对 c4.cgn，实验室前期研究发现 <em>LEM4</em> 在乳腺癌和卵巢癌中是重要的癌基因，能够影响抑癌基因 <em>RB1</em> 和原癌基因 <em>MYC</em>，我们推测 <em>LEM4</em> 可能通过癌基因之间的关系网络来影响 c4.cgn 中的大部分基因集。至于 <em>LEM4</em> 与 c7 集合的关系，目前还不清楚。</p>
+<div class="figure"><span id="fig:significant-geneset-per-dataset"></span>
+<img src="index_files/figure-html/significant-geneset-per-dataset-1.png" alt="各个集合在不同数据集中的整体表现" width="960" />
+<p class="caption">
+图 6: 各个集合在不同数据集中的整体表现
+</p>
+</div>
+<p>接下来，我们希望筛选出与 <em>LEM4</em> 相关性最强的基因集。我们将不同数据集的结果整合在一起，发现它们之间的一致性较差，即统计显著的基因集重合度较低。于是我们使用某一基因集表现为统计显著的数据集数目n，来衡量该基因集与 <em>LEM4</em> 的相关程度（具体计算方法见“材料与方法”部分）。我们注意到并非每一个基因集都在所有数据集中进行了 GSEA，于是我们计算出了某一基因集进行了 GSEA 的数据集数目 N。这一现象意味着在评估 n 时，N 也是一个不可忽略的因素，因为如果一个与 <em>LEM4</em> 真正相关的基因集只在较少数据集中进行了 GSEA，那么与在较多数据集中进行了 GSEA 的噪音基因集相比，前者的 n 值可能反而会更低。</p>
+<p>为了找出影响 N 的因素，我们检查了 GSEA 的输出日志，发现上述基因集在特定数据集中被包含的基因太少，以至于无法进行富集分析。由于基因芯片在本质上就不一定能完全覆盖转录组，而且在基因注释等处理环节可能会产生疏漏，我们决定不筛除对转录组覆盖率低的数据集，以避免损失有效信息。一种可行的改进方法是，用 n 与 N 的比值作为衡量基因集与 <em>LEM4</em> 相关性的指标。但是这样做会带来另一个问题，即当一个基因集的 N 较小时，难以区分随机因素与生物学效应对该指标的影响。考虑到我们的主要目的是发现新的研究靶点，我们决定牺牲灵敏度、确保特异度，仍然使用 n 作为主要评估指标，同时给出 N 作为决策的参考依据。为避免数据异质性的影响，我们排除了 c3.mir、c4.cgn 和 c7 这三个集合，同时排除了其它集合中包含过多（25% 及以上）统计显著的基因集的数据集。</p>
+<p>由于每个集合中都有很多 n 值很小的基因集，为了更好地展示数据分布，我们从每个集合中分别选取前 10 位正相关和前 10 位负相关的基因集，如图 <a href="result.html#fig:significant-dataset-per-geneset">7</a> 所示。可以看出不同集合之间存在明显差异，而且正相关的基因集的 n 值明显大于负相关。为了探索其原因，我们推测该现象可能与 <em>LEM4</em> 基因本身的性质有关，于是我们分析了 <em>BRCA1</em>、<em>BRCA2</em>、<em>TP53</em>、<em>MYC</em> 和 <em>NOTCH1</em> 这5个基因（数据未显示），均发现了类似的趋势，暗示 GSEA 这一分析本身可能存在偏差。接下来的分析主要专注于正相关的基因集。</p>
+<div class="figure"><span id="fig:significant-dataset-per-geneset"></span>
+<img src="index_files/figure-html/significant-dataset-per-geneset-1.png" alt="各个集合中前 10 位正相关和前 10 位负相关的基因集" width="768" />
+<p class="caption">
+图 7: 各个集合中前 10 位正相关和前 10 位负相关的基因集
+</p>
+</div>
+</div>
+<div id="how-filter-geneset" class="section level3">
+<h3>3. 探索筛选基因集的方法</h3>
+<p>为了筛选出与 <em>LEM4</em> 相关性最强的基因集，一个直观的想法也许是取 n 排名靠前（如前 25）的基因集，如表 S1 所示。但是这样会导致有些集合会有较多基因集入选，而另一些则较少，例如有 10 个基因集来自 c3.tft，而来自 h 的基因集一个都没有。为了应对这一问题，一种方案是同时保留整体排名靠前（如前 15）和在各自集合中分别排名靠前（如前 2）的基因集。为了评价该方案的合理性，我们对 c1、c3.tft 和 h 这三个集合进行了深入探索，如表 S2 所示。</p>
+<p>c1 集合整体表现不是很好，但是其中最靠前的基因集 <code>CHR12Q24</code>（n=36）恰好与 c2.cgp 中排名第 5 的基因集 <code>NIKOLSKY_BREAST_CANCER_12Q24_AMPLICON</code>（n=28）相符合（见表 S1），后者是 <span class="citation">Nikolsky et al. (<a href="#ref-chr12q24-amplicon" role="doc-biblioref">2008</a>)</span> 在乳腺癌中鉴定出一个扩增子（amplicon）。而排名第二的基因集 <code>CHR12Q23</code> 的 n 值则仅为 11（见表S2），可能仅仅只是因为与 <code>CHR12Q24</code> 距离较近。后面的基因集的 n 值就都不怎么突出了。</p>
+<p>c3.tft 这一集合中，排名前 10 的基因集均为 E2F 转录因子家族。这一结果确实得到了实验室前期实验证据的直接支持，但是冗余度太高。</p>
+<p>h 集合中排名前 8 位的基因集的 n 值均较为突出，但是我们发现前 5 位和第 6 至 8 位之间存在明显的分界线。从生物学意义来看，<code>E2F_TARGETS</code>、<code>MYC_TARGETS_V1</code> 和 <code>MYC_TARGETS_V2</code> 均能被实验室前期的实验证据直接支持，而 <code>MITOTIC_SPINDLE</code> 和 <code>G2M_CHECKPOINT</code> 则与 <em>LEM4</em> 在细胞周期中重要作用吻合，但是 <code>MTORC1_SIGNALING</code>、<code>DNA_REPAIR</code> 和 <code>UNFOLDED_PROTEIN_RESPONSE</code> 则与 <em>LEM4</em> 目前已知的功能几乎没有关系（基因集名称均省略了前缀 <code>HALLMARK_</code>）。结合以上两点，我们认为第 6 至 8 位基因集是假阳性结果，其原因可能是与前 5 位的基因集有较多重合的基因。为了验证这一点，我们利用 MSigDB 提供的重合分析工具（<a href="http://software.broadinstitute.org/gsea/msigdb/help_annotations.jsp#overlap" class="uri">http://software.broadinstitute.org/gsea/msigdb/help_annotations.jsp#overlap</a>）搜索了这三个基因集，如图 <a href="result.html#fig:geneset-overlap">8</a> 所示，可以看出它们分别与前 5 的基因集中的 2、2 和 4 个有明显的重合。作为对照，对于每个基因集，我们都从 h 集合中选取了相同类别且大小相近的两个基因集进行同样的搜索，如图 S3 所示，共计 6 个基因集中只有 1 个与前 5 的基因集中的 1 个有明显重合（另有 1 个与前 5 的基因集中的 1 个有不太明显的重合），从而验证了我们的想法。</p>
+<div class="figure"><span id="fig:geneset-overlap"></span>
+<img src="geneset-overlap.jpeg" alt="h 集合中第 6 至 8 位基因集均与某些前 5 位基因集存在明显重合" width="100%" />
+<p class="caption">
+图 8: h 集合中第 6 至 8 位基因集均与某些前 5 位基因集存在明显重合
+</p>
+</div>
+<p>A. <code>HALLMARK_MTORC1_SIGNALING</code>。B. <code>HALLMARK_DNA_REPAIR</code>。 C. <code>HALLMARK_UNFOLDED_PROTEIN_RESPONSE</code>。</p>
+</div>
+<div id="filter-and-explain" class="section level3">
+<h3>4. 筛选最终结果并分析其生物学意义</h3>
+<p>根据前文的探究，我们觉得应该针对每个集合的情况进行具体分析，既要选出该集合中 n 值最突出的基因集（与其它基因集存在明显的差异），也要考虑该集合能提供的生物学信息。如果对所有集合都采用同一标准（比如取前 2 位基因集）的话，在某些集合（比如 h）中会损失重要的信息，在某些集合（比如 c3.tft）中又产生会多余的信息。</p>
+<p>具体来说，我们从每个集合中筛选出 n 值最突出的少量基因集（一般不超过 3 个，考虑到 h 集合的特殊性，我们选取了 5 个），作为核心基因集，用于产生生物学假设，如表 S3 所示。从其它排名靠前的基因集中挑出与核心基因集有关的部分，作为补充基因集，用于支持和具化假设。</p>
+<p>核心基因集中有一些能被实验室前期的研究或已发表的论文直接支持，包括参与有丝分裂后核膜重建、调控细胞周期蛋白 D-CDK4/6-Rb 轴和调控 ERα 信号通路，如表 2 所示（能够支持这些功能的补充基因集如表 S4 所示）。这说明了我们的分析流程的合理性，也暗示核心基因集中的其它成员很可能揭示了 <em>LEM4</em> 尚未被发现的其它功能。</p>
+<table>
+<caption>表 2 与 <em>LEM4</em> 相关性最强的核心基因集及其生物学意义</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>LEM4</em> 已知的生物学功能</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">（1）参与有丝分裂后核膜重建</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_ENVELOPE_ORGANIZATION</code></td>
+<td align="left">86</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">（2）调控细胞周期蛋白 D-CDK4/6-Rb 轴</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_E2F_TARGETS</code></td>
+<td align="left">71</td>
+<td align="left">23</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_G1_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">23</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3_01</code></td>
+<td align="left">72</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">c6</td>
+<td align="left"><code>RB_P107_DN.V1_UP</code></td>
+<td align="left">76</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">（3）调控 ERα 信号通路</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V1</code></td>
+<td align="left">67</td>
+<td align="left">22</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V2</code></td>
+<td align="left">73</td>
+<td align="left">19</td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LEM4</em> 可能的新的生物学功能</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">（1）在 G2 期到 M 期的转化中起到关键作用</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_G2M_CHECKPOINT</code></td>
+<td align="left">76</td>
+<td align="left">24</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_G2_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">22</td>
+</tr>
+<tr class="odd">
+<td align="left">（2）通过影响微管蛋白，从而影响纺锤体的形成</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MITOTIC_SPINDLE</code></td>
+<td align="left">71</td>
+<td align="left">25</td>
+</tr>
+<tr class="odd">
+<td align="left">（3）调控 S 期 CDK，从而促进 DNA 复制</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_MCM_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">20</td>
+</tr>
+<tr class="odd">
+<td align="left">（4）直接影响核孔的 RNA 转运功能</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.reactome</td>
+<td align="left"><code>REACTOME_TRANSPORT_OF_MATURE_TRANSCRIPT_TO_CYTOPLASM</code></td>
+<td align="left">72</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_PORE</code></td>
+<td align="left">84</td>
+<td align="left">28</td>
+</tr>
+</tbody>
+</table>
+<p>N，某一基因集进行了GSEA的数据集数目，n，某一基因集表现为统计显著的数据集数目（后文的表格中不再解释）。</p>
+<p>在此基础上，我们从其它核心基因集中筛选出与 <em>LEM4</em> 已知的生物学功能相符合的部分，从中总结出 4 项 <em>LEM4</em> 可能的新功能，如表 2 所示。其中一些功能得到了补充基因集的支持，另一些则依赖补充基因集来启发我们具体的作用机制，如表 3 所示。关于 LEM4 影响纺锤体的方式，我们认为其影响了微管的聚合和解聚；关于 <em>LEM4</em> 对核孔的影响，我们根据多个与RNA转运有关的基因集，猜想 LEM4 除了影响核膜形成之外，会能直接与核孔复合体相互作用，影响 RNA（包括 mRNA 和 tRNA）的转运。</p>
+<table>
+<caption>表 3 用于支持 <em>LEM4</em> 可能的新功能的补充基因集（编号与表 2 中的相对应）</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">（1）在 G2 期到 M 期的转化中起到关键作用</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.reactome</td>
+<td align="left"><code>REACTOME_MITOTIC_G2_G2_M_PHASES</code></td>
+<td align="left">66</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td align="left">（2）通过影响微管蛋白，从而影响纺锤体的形成</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_REGULATION_OF_MICROTUBULE_POLYMERIZATION_OR_DEPOLYMERIZATION</code></td>
+<td align="left">85</td>
+<td align="left">26</td>
+</tr>
+<tr class="odd">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_REGULATION_OF_MICROTUBULE_BASED_PROCESS</code></td>
+<td align="left">85</td>
+<td align="left">25</td>
+</tr>
+<tr class="even">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_MITOTIC_SPINDLE</code></td>
+<td align="left">82</td>
+<td align="left">25</td>
+</tr>
+<tr class="odd">
+<td align="left">（3）调控 S 期CDK，从而促进 DNA 复制</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_ATP_DEPENDENT_DNA_HELICASE_ACTIVITY</code></td>
+<td align="left">89</td>
+<td align="left">26</td>
+</tr>
+<tr class="odd">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_DNA_HELICASE_ACTIVITY</code></td>
+<td align="left">91</td>
+<td align="left">26</td>
+</tr>
+<tr class="even">
+<td align="left">（4）直接影响核孔的 RNA 转运功能</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cp.reactome</td>
+<td align="left"><code>REACTOME_TRANSPORT_OF_MATURE_MRNA_DERIVED_FROM_AN_INTRONLESS_TRANSCRIPT</code></td>
+<td align="left">64</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td align="left">c5.all</td>
+<td align="left"><code>GO_TRNA_TRANSPORT</code></td>
+<td align="left">83</td>
+<td align="left">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-chr12q24-amplicon">
+<p>Nikolsky, Yuri, Evgeny Sviridov, Jun Yao, Damir Dosymbekov, Vadim Ustyansky, Valery Kaznacheev, Zoltan Dezso, et al. 2008. “Genome-wide functional synergy between amplified and mutated genes in human breast cancer.” <em>Cancer Research</em> 68 (22): 9532–40. <a href="https://doi.org/10.1158/0008-5472.CAN-08-3082">https://doi.org/10.1158/0008-5472.CAN-08-3082</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="material-method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discuss.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dongzhuoer/thesis/edit/bookdown/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

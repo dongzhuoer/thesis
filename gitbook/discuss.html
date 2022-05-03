@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>四、讨论与分析 | 南开大学本科生毕业论文（设计）</title>
+  <meta name="description" content="四、讨论与分析 | 南开大学本科生毕业论文（设计）" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="四、讨论与分析 | 南开大学本科生毕业论文（设计）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="dongzhuoer/thesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="四、讨论与分析 | 南开大学本科生毕业论文（设计）" />
+  
+  
+  
+
+<meta name="author" content="Zhuoer Dong" />
+
+
+<meta name="date" content="2018-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="result.html"/>
+<link rel="next" href="appendix.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="bookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>封面</a></li>
+<li class="chapter" data-level="" data-path="abstract-cn.html"><a href="abstract-cn.html"><i class="fa fa-check"></i>摘 要</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>一、前言和文献综述</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GEO"><i class="fa fa-check"></i>（一）GEO数据库</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GSEA"><i class="fa fa-check"></i>（二）GSEA及其发展</a></li>
+<li><a href="preface.html#LEM4">（三）<em>LEM4</em> 的功能</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html"><i class="fa fa-check"></i>二、材料与方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#data-software"><i class="fa fa-check"></i>（一）实验数据与软件</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#method"><i class="fa fa-check"></i>（二）实验方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#rGEO"><i class="fa fa-check"></i>1. rGEO算法实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#qGSEA"><i class="fa fa-check"></i>2. qGSEA软件实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#GSEA-and-integration"><i class="fa fa-check"></i>3. GSEA及其结果的整合</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#diagram"><i class="fa fa-check"></i>（三）实验流程图</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i>三、实验数据与结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#probe2symbol"><i class="fa fa-check"></i>（一）rGEO——将探针对应到 HUGO 基因符号</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#quick-run-GSEA"><i class="fa fa-check"></i>（二）qGSEA——快捷运行 GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#GSEA-883-dataset"><i class="fa fa-check"></i>（三）在883项数据集中运行GSEA并整合结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#run-GSEA"><i class="fa fa-check"></i>1. 运行GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#integrate-result"><i class="fa fa-check"></i>2. 整体分析GSEA的结果</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#how-filter-geneset"><i class="fa fa-check"></i>3. 探索筛选基因集的方法</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#filter-and-explain"><i class="fa fa-check"></i>4. 筛选最终结果并分析其生物学意义</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html"><i class="fa fa-check"></i>四、讨论与分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#easy-use"><i class="fa fa-check"></i>（一）进一步增强易用性</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#more-platform"><i class="fa fa-check"></i>（二）支持更多的平台表格</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#merit-of-integration"><i class="fa fa-check"></i>（三）整合多项数据集的GSEA结果的优势</a></li>
+<li><a href="discuss.html#better-filter">（四）更好地筛选与 <em>LEM4</em> 最相关的基因集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附 录</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-plot"><i class="fa fa-check"></i>（一）附图</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-table"><i class="fa fa-check"></i>（二）附表</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i>致 谢</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">南开大学本科生毕业论文（设计）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="discuss" class="section level1">
+<h1>四、讨论与分析</h1>
+<div id="easy-use" class="section level2">
+<h2>（一）进一步增强易用性</h2>
+<p>与目前已有的应用 GSEA 的软件相比，qGSEA 以非常友好的用户界面解决了难以准备 javaGSEA 的输入文件的难题。但是，我们也应该看到，该软件还有较大的改进空间。对于 javaGSEA 的4大输入文件——表达数据（Expression dataset）文件、表型标签（Phenotype labels）文件、基因集（Gene sets）文件和芯片注释（Chip annotations）文件，第 1、4 项在 qGSEA 中已经得到很好的支持，第 3 项可以由 MSigDB 提供，而第 2 项目前仍比较麻烦。</p>
+<p>javaGSEA 提供了为用户制作表型文件的功能，对于离散型表型，用户需要在两个文本框（对应两种表型）中输入每个样本（sample）的名字；当以某一基因的表达量作为表型时，界面变得较为友好，用户可以从现成的列表中选择基因，也可以对基因名进行搜索，但是需要事先折叠（collapse）数据集，如图 S4 所示（由于 javaGSEA 的主程序默认会自动折叠数据集，qGSEA 提供的结果是未折叠的数据集）。</p>
+<p>对于表型文件，qGSEA 提供了一个可选项，用户可以在运行前输入一至多个基因符号，这样运行后会额外生成一个连续型表型文件，省去了在 javaGSEA 中执行折叠数据集这一操作的麻烦（此时用户尚未点击 <code>Run</code>，也就是说原始数据文件还没有被解析，故无法提供 javaGSEA 中的选择和搜索功能）。</p>
+<p>我们注意到，GSE 的 matrix 文件中包含了丰富的关于 sample 的信息，其中某些也许可以作为表型，比如 GSE19161 的 61 个样本就可以根据 <code>event indicator</code> 分为 <code>censored</code> 和 <code>event</code> 两类。我们计划在 qGSEA 中新增一个组件，用于生成表型文件。对于连续型表型，我们从 matrix 文件中提取出可能有用的信息供用户选择，对于含有较多样本的数据集，这样能大大节省用户的时间；以基因作为表型时，我们会提供类似前面提到的选择和搜索功能，使用户在不用执行折叠数据集这一操作的情况下也能享受方便的操作。</p>
+</div>
+<div id="more-platform" class="section level2">
+<h2>（二）支持更多的平台表格</h2>
+<p>在将探针对应到 HUGO 基因符号的过程中，还剩一部分平台表格没有被解析。对于存在可用信息，但无法通过编程来批量提取的情况，在具体的研究中可以使用人工分析。但 rGEO 的核心思想是开发出通用的规则，这样可以更好地应对不断增加的数据（新增加的数据中的大部分应该也能被这些规则处理），故我们并不打算完全覆盖每一个特例。</p>
+<p>对于那些提供了探针序列的平台文件，可以考虑将序列 BLAST 到人类基因组上，根据得分最高的结果（hit）来确定该探针对应的基因。需要指出的是，该方法应该给予最低的优先级，即只有在没有其它信息可用时，才使用该方法。因为基因芯片是为了特定的靶点而设计的，很多情况下探针的靶基因并不能通过简单地比较 BLAST 得分而确定，而是需要考虑除了序列相似性之外的诸多因素。平台文件中的注释（来自不同数据库的 ID 等）正是厂商在综合考虑这些信息之后给出的。在后续的研究中，我们计划深入挖掘目前还未解析的平台中的注释信息，对于仍无法解析的平台文件，取探针序列 BLAST 到最新的人类基因组组装 GRCh38 后得分最高的基因。</p>
+</div>
+<div id="merit-of-integration" class="section level2">
+<h2>（三）整合多项数据集的GSEA结果的优势</h2>
+<p>我们进行了整合多项数据集的 GSEA 结果的早期尝试，得到了富集结果的显著性在全部数据集中的整体分布，从中发现了一些有趣的趋势，这些趋势在仅分析少数几个数据集时是难以发现的。</p>
+<p>我们发现对于 c3 和 c4.cgn 集合，很多数据集均呈现出较大比例（甚至全部）的统计显著的基因集，如图 5 所示，这一现象无法用随机性来解释，于是提示我们 <em>LEM4</em> 可能会影响 miRNA 的加工和参与了许多（抑）癌基因之间的作用网络。当然，这只是一个初步的猜想，还需要更多的证据来支持。关于 <em>LEM4</em> 通过影响内质网的稳定性来影响 microRNA 的加工的猜想，我们计划在相同的数据集中对其它基因进行 GSEA，包括负责 microRNA 加工的关键基因、维持内质网正常形态的关键基因和与以上两者都无关的基因。而关于 <em>LEM4</em> 参与到癌基因之间的关系网络的猜想，我们则计划对 <em>TP53</em>、<em>RB</em> 等重要的（抑）癌基因和与癌症基本无关的基因进行 GSEA。除了提供生物学猜想之外，图5 还提供了另一点很重要的信息，即在后续筛选与 <em>LEM4</em> 相关性最强的基因集的过程中，应该排除 c3、c4.cgn 和 c7 集合。这是因为在其它集合中，一个基因集是否统计显著取决于其与 <em>LEM4</em> 的相关性的强弱，而在上述三个集合中这一点主要由随机因素决定，将二者混杂在一起会减弱统计分析的效度，使我们难以从全部基因集中区分出与 <em>LEM4</em> 最相关的那一小部分。但是，如果仅分析少数几个数据集，我们很可能无法发现两类集合之间这一不容忽视的差别</p>
+<p>由于不同数据集的结果之间存在很大的差异，我们引入 n 值来衡量基因集与 <em>LEM4</em> 的相关程度。我们发现，正相关的基因集中排名靠前部分的 n 值明显大于负相关的，这一趋势在 <em>BRCA1</em>、<em>BRCA2</em>、<em>TP53</em>、<em>MYC</em> 和 <em>NOTCH1</em> 中均存在，于是我们开始从 GSEA 本身的分析方法中探索原因。GSEA 的富集分数是通过在基因集 S 中遍历有序列表 L 得到的，我们在分析流程中将参数 P 设置为 1，也就是对 S 中的基因按照其与表型的相关程度进行加权，而不在 S 中的基因则不进行加权。另外，我们限定基因集的大小上限为 500，这意味着通常情况下不在 S 中的基因远多于在 S 中的。以上两点造成了累加统计量的增加和减少的不对称性，可能会造成 ES 更倾向于取正值。但是，从 L 逆序来看时，累加统计量变为由在 S 中的基因减少、不在 S 中的基因增加，也就是说 ES 的正值与负值应该是对称的。综上所述，该问题有待进一步探究。</p>
+<p>以 h 集合为例，我们从 n 值的间断性得到启发，发现了基因集之间的相互重合造成的假阳性，这一点在仅分析少量数据集时是难以做到的。例如我们从 <code>HALLMARK_MTORC1_SIGNALING</code> 表现为统计显著的数据集中随机抽取出 GSE64073，其中所有统计显著的基因集如表 4 所示。可以看出，在前文总结出的 h 集合中的 5 个核心基因集中只出现了 <code>HALLMARK_MYC_TARGETS_V2</code>，而且其 FDR 值还是最大的。如果仅分析这一个数据集，对 h 集合而言，最后的结果就是给出了 1 个真阳性的基因集和 5 个假阳性的基因集，同时认为真阳性的基因集反而是最不可靠的。由此可以看出使用 n 值评价基因集的优越性。前文中提到的SetRank <span class="citation">(Simillion et al. <a href="#ref-SetRank" role="doc-biblioref">2017</a>)</span> 首先计算出原始 <em>P</em> 值，然后分析显著重叠的基因集对，接着针对其中每一对基因集计算出新的 <em>P</em> 值，由此筛选出某一基因集的显著性是由与其它基因集的重叠而导致的情况，最后将这些情况整合成有向图，从而决定应该被舍弃的假阳性基因集。这一方面验证了我们的结论，另一方面也为更准确地去除这种假阳性提供了思路，因为其与真阳性基因集的 n 值之间并不总会表现出明显的间断。</p>
+<table>
+<caption>表 4 GSE64073 数据集中统计显著的基因集（FDR &lt; 0.25）</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">P</th>
+<th align="left">FDR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">c6</td>
+<td align="left"><code>MYC_UP.V1_UP</code></td>
+<td align="left">0.01</td>
+<td align="left">0.21</td>
+</tr>
+<tr class="even">
+<td align="left">c6</td>
+<td align="left"><code>RPS14_DN.V1_DN</code></td>
+<td align="left">0.03</td>
+<td align="left">0.25</td>
+</tr>
+<tr class="odd">
+<td align="left">c6</td>
+<td align="left"><code>MEL18_DN.V1_UP</code></td>
+<td align="left">0.05</td>
+<td align="left">0.25</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V2</code></td>
+<td align="left">0.01</td>
+<td align="left">0.23</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_UNFOLDED_PROTEIN_RESPONSE</code></td>
+<td align="left">0.04</td>
+<td align="left">0.19</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MTORC1_SIGNALING</code></td>
+<td align="left">0.06</td>
+<td align="left">0.16</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_GLYCOLYSIS</code></td>
+<td align="left">0.05</td>
+<td align="left">0.14</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_ANGIOGENESIS</code></td>
+<td align="left">0.02</td>
+<td align="left">0.15</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_PI3K_AKT_MTOR_SIGNALING</code></td>
+<td align="left">0.04</td>
+<td align="left">0.15</td>
+</tr>
+</tbody>
+</table>
+<p>结果表明，n 值排名靠前的基因集中，有一些能被已有实验证据直接支持，另一则与已有的生物学知识相符，从而证明了我们的分析方法的可靠性。需要指出，在所有的结果展示中我们都同时给出了 n 和 N。正如前文中所提到的，一个 N 较大的噪音基因集也可能呈现较大的 n值，从而造成假阳性。不过这一现象在 n值 最靠前的基因集中较少发生，因为这种假阳性要求 N 明显大于其它基因集，但 n值 最靠前的基因集的 N 本身就已经很大甚至接近最大值（参与分析的全部数据集数，108）了，所以在这一范围内噪音基因集的 n值 很难超过与 <em>LEM4</em> 真正相关的基因集。从表 S3 来看，我们的最终结果中应该没有包含由 N 过大引起的假阳性。但是我们依然不能放松警惕，在将来的研究中，不能只关注 n值，而要时刻注意比较 N 是否有明显差别，避免在最终结果中引入假阳性。</p>
+<p>综上所述，整合多项数据集的 GSEA 结果，尤其是 n 值的引入，揭示了一些新的的现象，给出了更加鲁棒、更具有生物学意义的结果，从而体现出相对于仅分析少量数据集的优越性。</p>
+</div>
+<div id="better-filter" class="section level2">
+<h2>（四）更好地筛选与 <em>LEM4</em> 最相关的基因集</h2>
+<p>我们发现不同集合之间的差距较为明显，采用统一的标准会造成有效信息的流失和冗余信息的堆积，所以我们针对每个集合的情况进行了具体分析。然而具体到不同集合中 n 值分布的处理，我们还没有找到一个很好的方法。当一个集合中排名靠前的基因集的 n 值与其它基因集之间有很明显的间断时，比较容易处理，比如c1集合取第1位或前两位均可；而当 n 值分布较为连续时，真阳性基因集与假阳性的差距较小，前者并不总是排在最前面，如果要想找到比较明显的间断可能会得到过多的基因集，如果仅取最靠前的少数几位又有可能会丢失重要的基因集。后续的研究的一个重要方向就是发展更加客观的统计方法，更加准确地量化基因集与自变量之间的相关性，从而更加有效地区分出真阳性结果。</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-SetRank">
+<p>Simillion, Cedric, Robin Liechti, Heidi E. L. Lischer, Vassilios Ioannidis, and Rémy Bruggmann. 2017. “Avoiding the pitfalls of gene set enrichment analysis with SetRank.” <em>BMC Bioinformatics</em> 18 (1): 151. <a href="https://doi.org/10.1186/s12859-017-1571-6">https://doi.org/10.1186/s12859-017-1571-6</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="result.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dongzhuoer/thesis/edit/bookdown/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

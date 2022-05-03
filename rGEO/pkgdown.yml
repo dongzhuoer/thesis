@@ -1,0 +1,10 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  rGEO: rGEO.html
+last_built: 2022-05-03T14:28Z
+urls:
+  reference: https://dongzhuoer.github.io/thesis/rGEO/reference
+  article: https://dongzhuoer.github.io/thesis/rGEO/articles
+

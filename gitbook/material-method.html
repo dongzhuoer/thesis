@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>二、材料与方法 | 南开大学本科生毕业论文（设计）</title>
+  <meta name="description" content="二、材料与方法 | 南开大学本科生毕业论文（设计）" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="二、材料与方法 | 南开大学本科生毕业论文（设计）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="dongzhuoer/thesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="二、材料与方法 | 南开大学本科生毕业论文（设计）" />
+  
+  
+  
+
+<meta name="author" content="Zhuoer Dong" />
+
+
+<meta name="date" content="2018-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preface.html"/>
+<link rel="next" href="result.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="bookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>封面</a></li>
+<li class="chapter" data-level="" data-path="abstract-cn.html"><a href="abstract-cn.html"><i class="fa fa-check"></i>摘 要</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>一、前言和文献综述</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GEO"><i class="fa fa-check"></i>（一）GEO数据库</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GSEA"><i class="fa fa-check"></i>（二）GSEA及其发展</a></li>
+<li><a href="preface.html#LEM4">（三）<em>LEM4</em> 的功能</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html"><i class="fa fa-check"></i>二、材料与方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#data-software"><i class="fa fa-check"></i>（一）实验数据与软件</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#method"><i class="fa fa-check"></i>（二）实验方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#rGEO"><i class="fa fa-check"></i>1. rGEO算法实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#qGSEA"><i class="fa fa-check"></i>2. qGSEA软件实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#GSEA-and-integration"><i class="fa fa-check"></i>3. GSEA及其结果的整合</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#diagram"><i class="fa fa-check"></i>（三）实验流程图</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i>三、实验数据与结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#probe2symbol"><i class="fa fa-check"></i>（一）rGEO——将探针对应到 HUGO 基因符号</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#quick-run-GSEA"><i class="fa fa-check"></i>（二）qGSEA——快捷运行 GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#GSEA-883-dataset"><i class="fa fa-check"></i>（三）在883项数据集中运行GSEA并整合结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#run-GSEA"><i class="fa fa-check"></i>1. 运行GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#integrate-result"><i class="fa fa-check"></i>2. 整体分析GSEA的结果</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#how-filter-geneset"><i class="fa fa-check"></i>3. 探索筛选基因集的方法</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#filter-and-explain"><i class="fa fa-check"></i>4. 筛选最终结果并分析其生物学意义</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html"><i class="fa fa-check"></i>四、讨论与分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#easy-use"><i class="fa fa-check"></i>（一）进一步增强易用性</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#more-platform"><i class="fa fa-check"></i>（二）支持更多的平台表格</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#merit-of-integration"><i class="fa fa-check"></i>（三）整合多项数据集的GSEA结果的优势</a></li>
+<li><a href="discuss.html#better-filter">（四）更好地筛选与 <em>LEM4</em> 最相关的基因集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附 录</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-plot"><i class="fa fa-check"></i>（一）附图</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-table"><i class="fa fa-check"></i>（二）附表</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i>致 谢</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">南开大学本科生毕业论文（设计）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="material-method" class="section level1">
+<h1>二、材料与方法</h1>
+<div id="data-software" class="section level2">
+<h2>（一）实验数据与软件</h2>
+<p>我们从 GSE 中筛选物种为 <em><code>Homo sapiens</code></em> ，类型为 <code>Expression profiling by array</code>，标题中同时包含乳腺或卵巢（<code>breast|ovarian</code>）和癌（<code>cancer|adenocarcinoma|carcinoma|tumor</code>）的数据集，共 1 187个（截至 2018 年 04 月 17 日）。</p>
+<p>我们从 Broad 研究所网站（<a href="http://www.broadinstitute.org/gsea/index.jsp" class="uri">http://www.broadinstitute.org/gsea/index.jsp</a>）下载了 GSEA 软件（Java 实现版本，javaGSEA 3.0）和基因集数据库 MSigDB <span class="citation">(Liberzon et al. <a href="#ref-MSigDB" role="doc-biblioref">2011</a>)</span> （Molecular Signatures Database）v6.1（共包含 17 786个 基因集）。</p>
+<p>所有的数据分析均在 R 语言 3.4.4 中完成。</p>
+</div>
+<div id="method" class="section level2">
+<h2>（二）实验方法</h2>
+<div id="rGEO" class="section level3">
+<h3>1. rGEO算法实现</h3>
+<p>为了确定 SOFT 文件的平台表格中每一列储存的 ID 来自哪一个数据库，我们通过正则表达式去挖掘列名和描述中的信息，比如既包含 <code>entrez</code>、又包含 <code>id</code> 的列储存的应该就是 Entrez Gene ID，同时对所有符合条件的列的列名和描述进行人工复查，剔除可能有问题的情况，比如在上述条件下额外包含 <code>unigene</code> 的列实际上储存的是 UniGene <span class="citation">(Pontius, Wagner, and Schuler <a href="#ref-UniGene" role="doc-biblioref">2003</a>)</span> ID，此时规则就应该修改为，既包含 <code>entrez</code>、又包含 <code>id</code> 且不包含 <code>unigene</code>。</p>
+<p>在实际操作中，我们发现有时候很难区分某一列储存的到底是 Entrez Gene ID 还是 HUGO 基因符号，注意到这两者之间没有任何重叠，我们将其合并为一个新的 ID——<code>entrez_or_symbol</code>，该 ID 可用于将这些难以界定的列对应到 HUGO 基因符号。同理，我们从 INSDC <span class="citation">(Nakamura, Cochrane, and Karsch-Mizrachi <a href="#ref-INSDC" role="doc-biblioref">2013</a>)</span> accession（有时也被称为 GenBank <span class="citation">(Benson <a href="#ref-GenBank" role="doc-biblioref">2004</a>)</span> accession）和 RefSeq <span class="citation">(O’Leary et al. <a href="#ref-RefSeq" role="doc-biblioref">2016</a>)</span> accession （nucleotide）合并得到 <code>genbank</code> 这一新 ID。</p>
+<p>就这样，我们为常见数据库的 ID 都生成了相应的规则，将其应用到具体的平台表格则可以知道特定数据库的 ID 存储于哪一列。对于未来新增加的数据，可能会出现新的特例，但是我们制定的这些规则在大部分情况下还是适用的，同时这些规则具有很好的可扩展性，可以在未来进行定期增量更新。</p>
+<p>接下来我们需要将其它数据库的 ID 对应到 HUGO 基因符号，如图 <a href="material-method.html#fig:probe-to-symbol">3</a> 所示。我们从 HGNC <span class="citation">(Yates et al. <a href="#ref-HGNC" role="doc-biblioref">2017</a>)</span>（<a href="https://www.genenames.org/help/statistics-downloads" class="uri">https://www.genenames.org/help/statistics-downloads</a>）下载了 <code>hgnc_complete_set.txt</code> 文件，实现了从常见数据库的 ID 到 HUGO 基因符号之间的对应，具体包括 Entrez Gene ID、Ensembl gene ID、INSDC accession、RefSeq accession（nucleotide）。我们还从 NCBI（<a href="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2unigene" class="uri">ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2unigene</a>）下载了 <code>gene2unigene.tsv</code> 文件，其中包含了 Entrez Gene ID 与 UniGene ID 之间的对应关系，结合前文，就实现了 UniGene ID 与 HUGO 基因符号之间的对应。至此，经过一到两次转换即可将 SOFT 文件中的探针对应到 HUGO 基因符号。</p>
+<div class="figure"><span id="fig:probe-to-symbol"></span>
+<img src="probe-to-symbol.png" alt="将探针对应到 HUGO 基因符号（以通过Ensembl Gene ID 为例）" width="100%" />
+<p class="caption">
+图 3: 将探针对应到 HUGO 基因符号（以通过Ensembl Gene ID 为例）
+</p>
+</div>
+<p>但是一个麻烦在于这些对应关系中经常包含一对多的情况。javaGSEA 允许一个探针对应到一个或多个 HUGO 基因符号，但是直接将一对多对应中的其它数据库的 ID 替换为 HUGO 基因符号会造成很大的计算开销。为此，我们首先将这些一对多对应拆分成多个一对一对应，然后把它们和剩下的一对一的对应合并（前文提到的文件中也存在一对多对应，我们就是通过这两步得到由其它数据库的 ID 到 HUGO 基因符号的一对一对应），接下来将其它数据库的 ID 对应到 HUGO 基因符号，最后将重复的一对一对应折叠成一对多对应并与剩下的一对一对应合并，如图 3 所示。</p>
+<p>在这个过程中的另一个麻烦在于 SOFT 文件的混乱。比如，在前文提到的一对多对应中，不同平台表格中用于分割 ID 的间隔符就不统一，有 <code>,</code>，<code>///</code>， <code>,</code>等。我们巧妙地利用正则表达式中的反向匹配规则，不去拘泥于分析确切的间隔符，而是将不会在 ID 中出现的字符一律视为间隔符。例如 Entrez Gene ID 完全由数字组成，那么任何非数字的字符均会被视为间隔符。</p>
+<p>我们将上述过程中用到的 R 语言代码分割成相对独立的函数，并在设计的过程中加入了可扩展性和重用性的考虑，这样既有助于将来的更新，也方便其它研究者完成类似的任务。</p>
+</div>
+<div id="qGSEA" class="section level3">
+<h3>2. qGSEA软件实现</h3>
+<p>qGSEA 基于 Shiny 而开发，有两种运行模式——A 和 B，其中模式 B 又分为 B-1 和 B-2 两步。</p>
+<p>在模式 A 中，我们根据用户提供的 GSE accession 计算出 matrix 文件和 SOFT 文件的链接，然后用 R 语言内置的函数去下载上述文件，接下来我们在后台调用 rGEO 来完成探针到 HUGO 基因符号的对应，最后生成 javaGSEA 的输入文件并将其写入用户指定的输出文件夹中（选择文件或文件夹的功能由 shinyFiles 包提供）。</p>
+<p>在 B-1 中，我们根据用户提供的 GSE accession，使用 shinyjs 包提供的 <code>runjs()</code> 函数运行 JavaScript 代码，实现实时更新 <code>Download matrix file</code> 和 <code>Download SOFT file</code> 这两个按钮对应的链接。同时修改按钮的 <code>onclick()</code> 句柄，使其触发按钮内链接文字（<code>&lt;a&gt;</code> 元素）的 <code>click()</code> 事件，从而实现单击按钮或按钮内的文字均能下载文件的效果。在 B-2 中，我们仍需要用户提供 GSE accession，这样一方面便于确定生成文件的文件名，另一方面也可以验证用户是否选择了正确的原始数据文件（这里我们假定用户不会修改 B-1 中下载的原始数据的文件名，对于确实需要修改文件名的高级用户，可以直接使用 rGEO 中提供的接口），其它方面与模式 A 相似。</p>
+<p>在运行过程中出现错误后的提示信息均使用 JavaScript 来实现动态更新。由于文件（夹）选择控件目前还未支持 Shiny 控件的全部标准，而且同时显示太多信息容易干扰用户的决策，大部分控件的提示信息都是在点击 <code>Run</code> 之后才会更新。但是在 B-1 中没有 <code>Run</code> 按钮，故我们将 GSE accession 的提示信息设置为及时更新（在输入框的状态发生变化后就会立即更新）。</p>
+</div>
+<div id="GSEA-and-integration" class="section level3">
+<h3>3. GSEA及其结果的整合</h3>
+<p>我们使用 MSigDB 中的 13 个基因集集合（collection），如表 1 所示，以 <em>LEM4</em> 的表达量作为表型标签，Metric 选择 <code>Pearson</code>，其它参数均选用默认值。因为基于重排表型的显著性估计方法能很好地控制假阳性，而且我们这里的主要目的是生成假设，根据 GSEA 团队的推荐，我们用 FDR &lt; 0.25 来判定统计显著性。但使用这样较大的 FDR 阈值之后，被判定为统计显著的基因集的 FDR 之间会存在较大差异，而仅使用某一基因集表现为统计显著的数据集数目 n，来评估其与 <em>LEM4</em> 之间的相关性则忽略了这一差异。于是，在计算 n 时，我们减去了筛选出的基因集的 FDR 的总和，使得其含义变为某一基因集表现为真阳性的数据集数目的估计值。这样可以给予 FDR 小的基因集更大的权重，从而加强统计分析的效度。</p>
+<table>
+<caption>表 1 　运行GSEA时使用的基因集集合</caption>
+<thead>
+<tr class="header">
+<th align="left">名称</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left">特征（hallmark）基因集 <span class="citation">(Liberzon et al. <a href="#ref-MSigDB-hallmark" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="even">
+<td align="left">c1</td>
+<td align="left">位置基因集</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left">化学和遗传学扰动</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left">BioCarta 基因集</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cp.kegg</td>
+<td align="left">KEGG 基因集</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.reactome</td>
+<td align="left">Reactome 基因集</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.mir</td>
+<td align="left">microRNA 靶基因</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left">转录因子靶基因</td>
+</tr>
+<tr class="odd">
+<td align="left">c4.cgn</td>
+<td align="left">癌症基因邻居</td>
+</tr>
+<tr class="even">
+<td align="left">c4.cm</td>
+<td align="left">癌症模块</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left">GO 基因集</td>
+</tr>
+<tr class="even">
+<td align="left">c6</td>
+<td align="left">癌基因标志（signature）</td>
+</tr>
+<tr class="odd">
+<td align="left">c7</td>
+<td align="left">免疫标志</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="diagram" class="section level2">
+<h2>（三）实验流程图</h2>
+<div class="figure">
+<img src="diagram.png" alt="" />
+<p class="caption">实验流程图</p>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-GenBank">
+<p>Benson, Dennis A. 2004. “GenBank.” <em>Nucleic Acids Research</em> 33 (Database issue): D34–D38. <a href="https://doi.org/10.1093/nar/gki063">https://doi.org/10.1093/nar/gki063</a>.</p>
+</div>
+<div id="ref-MSigDB-hallmark">
+<p>Liberzon, Arthur, Chet Birger, Helga Thorvaldsdóttir, Mahmoud Ghandi, Jill P. Mesirov, and Pablo Tamayo. 2015. “The Molecular Signatures Database (MSigDB) hallmark gene set collection.” <em>Cell Systems</em> 1 (6): 417–25. <a href="https://doi.org/10.1016/j.cels.2015.12.004">https://doi.org/10.1016/j.cels.2015.12.004</a>.</p>
+</div>
+<div id="ref-MSigDB">
+<p>Liberzon, Arthur, Aravind Subramanian, Reid Pinchback, Helga Thorvaldsdóttir, Pablo Tamayo, and Jill P. Mesirov. 2011. “Molecular signatures database (MSigDB) 3.0.” <em>Bioinformatics (Oxford, England)</em> 27 (12): 1739–40. <a href="https://doi.org/10.1093/bioinformatics/btr260">https://doi.org/10.1093/bioinformatics/btr260</a>.</p>
+</div>
+<div id="ref-INSDC">
+<p>Nakamura, Yasukazu, Guy Cochrane, and Ilene Karsch-Mizrachi. 2013. “The International Nucleotide Sequence Database Collaboration.” <em>Nucleic Acids Research</em> 41 (D1): D21–D24. <a href="https://doi.org/10.1093/nar/gks1084">https://doi.org/10.1093/nar/gks1084</a>.</p>
+</div>
+<div id="ref-RefSeq">
+<p>O’Leary, Nuala A., Mathew W. Wright, J. Rodney Brister, Stacy Ciufo, Diana Haddad, Rich McVeigh, Bhanu Rajput, et al. 2016. “Reference sequence (RefSeq) database at NCBI: Current status, taxonomic expansion, and functional annotation.” <em>Nucleic Acids Research</em> 44 (D1): D733–D745. <a href="https://doi.org/10.1093/nar/gkv1189">https://doi.org/10.1093/nar/gkv1189</a>.</p>
+</div>
+<div id="ref-UniGene">
+<p>Pontius, J U, L Wagner, and G D Schuler. 2003. “UniGene: a unified view of the transcriptome.” <em>The NCBI Handbook</em>, no. 21: 1–12. <a href="https://www.ncbi.nlm.nih.gov/books/NBK21083/">https://www.ncbi.nlm.nih.gov/books/NBK21083/</a>.</p>
+</div>
+<div id="ref-HGNC">
+<p>Yates, Bethan, Bryony Braschi, Kristian A. Gray, Ruth L. Seal, Susan Tweedie, and Elspeth A. Bruford. 2017. “Genenames.org: the HGNC and VGNC resources in 2017.” <em>Nucleic Acids Research</em> 45 (D1): D619–D625. <a href="https://doi.org/10.1093/nar/gkw1033">https://doi.org/10.1093/nar/gkw1033</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="result.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dongzhuoer/thesis/edit/bookdown/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

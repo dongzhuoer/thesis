@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>附 录 | 南开大学本科生毕业论文（设计）</title>
+  <meta name="description" content="附 录 | 南开大学本科生毕业论文（设计）" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="附 录 | 南开大学本科生毕业论文（设计）" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="dongzhuoer/thesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="附 录 | 南开大学本科生毕业论文（设计）" />
+  
+  
+  
+
+<meta name="author" content="Zhuoer Dong" />
+
+
+<meta name="date" content="2018-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="discuss.html"/>
+<link rel="next" href="acknowledgement.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="bookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>封面</a></li>
+<li class="chapter" data-level="" data-path="abstract-cn.html"><a href="abstract-cn.html"><i class="fa fa-check"></i>摘 要</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>一、前言和文献综述</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GEO"><i class="fa fa-check"></i>（一）GEO数据库</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#GSEA"><i class="fa fa-check"></i>（二）GSEA及其发展</a></li>
+<li><a href="preface.html#LEM4">（三）<em>LEM4</em> 的功能</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html"><i class="fa fa-check"></i>二、材料与方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#data-software"><i class="fa fa-check"></i>（一）实验数据与软件</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#method"><i class="fa fa-check"></i>（二）实验方法</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#rGEO"><i class="fa fa-check"></i>1. rGEO算法实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#qGSEA"><i class="fa fa-check"></i>2. qGSEA软件实现</a></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#GSEA-and-integration"><i class="fa fa-check"></i>3. GSEA及其结果的整合</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-method.html"><a href="material-method.html#diagram"><i class="fa fa-check"></i>（三）实验流程图</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i>三、实验数据与结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#probe2symbol"><i class="fa fa-check"></i>（一）rGEO——将探针对应到 HUGO 基因符号</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#quick-run-GSEA"><i class="fa fa-check"></i>（二）qGSEA——快捷运行 GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#GSEA-883-dataset"><i class="fa fa-check"></i>（三）在883项数据集中运行GSEA并整合结果</a>
+<ul>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#run-GSEA"><i class="fa fa-check"></i>1. 运行GSEA</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#integrate-result"><i class="fa fa-check"></i>2. 整体分析GSEA的结果</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#how-filter-geneset"><i class="fa fa-check"></i>3. 探索筛选基因集的方法</a></li>
+<li class="chapter" data-level="" data-path="result.html"><a href="result.html#filter-and-explain"><i class="fa fa-check"></i>4. 筛选最终结果并分析其生物学意义</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html"><i class="fa fa-check"></i>四、讨论与分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#easy-use"><i class="fa fa-check"></i>（一）进一步增强易用性</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#more-platform"><i class="fa fa-check"></i>（二）支持更多的平台表格</a></li>
+<li class="chapter" data-level="" data-path="discuss.html"><a href="discuss.html#merit-of-integration"><i class="fa fa-check"></i>（三）整合多项数据集的GSEA结果的优势</a></li>
+<li><a href="discuss.html#better-filter">（四）更好地筛选与 <em>LEM4</em> 最相关的基因集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附 录</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-plot"><i class="fa fa-check"></i>（一）附图</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#appendix-table"><i class="fa fa-check"></i>（二）附表</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i>致 谢</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">南开大学本科生毕业论文（设计）</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1">
+<h1>附 录</h1>
+<div id="appendix-plot" class="section level2">
+<h2>（一）附图</h2>
+<div class="figure">
+<img src="qGSEA-homepage.png" alt="" />
+<p class="caption">图 S1 qGSEA 的界面，图中显示的是选择运行模式的界面</p>
+</div>
+<div class="figure">
+<img src="qGSEA-error-hint.png" alt="" />
+<p class="caption">图 S2 qGSEA 的错误提示消息</p>
+</div>
+<p>A. 未输入 GSE accession 时的提示消息。B. 未选择 matrix 文件时的提示消息。C. 选择了错误的 matrix 文件时的提示消息。D. 未选择 SOFT 文件时的提示消息。E. 选择了错误的 SOFT 文件时的提示消息。E. 输入了错误的 HUGO 基因符号（只有一个基因）时的提示消息。F. 输入了错误的 HUGO 基因符号（有多个基因）时的提示消息。</p>
+<!--
+
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_PI3K_AKT_MTOR_SIGNALING&collection=H
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_TNFA_SIGNALING_VIA_NFKB&collection=H
+
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_UV_RESPONSE_UP&collection=H
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_UV_RESPONSE_DN&collection=H
+
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_PROTEIN_SECRETION&collection=H
+http://software.broadinstitute.org/gsea/msigdb/compute_overlaps.jsp?geneSetName=HALLMARK_APOPTOSIS&collection=H
+
+-->
+<div class="figure">
+<img src="geneset-overlap-control.jpeg" alt="" />
+<p class="caption">图 S3 h 集合中其它基因集的重合分析，与图7形成对照</p>
+</div>
+<p>A. <code>PI3K_AKT_MTOR_SIGNALING</code>（上）和 <code>TNFA_SIGNALING_VIA_NFKB</code>（上），作为 <code>MTORC1_SIGNALING</code> 的对照。B. <code>UV_RESPONSE_UP</code>（上）和<code>UV_RESPONSE_DN</code>（下），作为 <code>DNA_REPAIR</code> 的对照。C. <code>PROTEIN_SECRETION</code>（上）和 <code>APOPTOSIS</code>（下），作为 <code>UNFOLDED_PROTEIN_RESPONSE</code> 的对照。基因集名称均省略前缀 <code>HALLMARK_</code>。</p>
+<div class="figure">
+<img src="javaGSEA-make-cls.jpeg" alt="" />
+<p class="caption">图 S4 在 javaGSEA 中制作表型文件</p>
+</div>
+<p>A. 离散型表型。B. 先折叠数据集，然后以特定基因的表达量作为表型，图中演示了搜索基因符号的功能（这里是部分匹配）。</p>
+</div>
+<div id="appendix-table" class="section level2">
+<h2>（二）附表</h2>
+<table>
+<caption>表 S1 在全部集合中 n 值排名前25的基因集</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">c1</td>
+<td align="left"><code>CHR12Q24</code></td>
+<td align="left">102</td>
+<td align="left">35</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>HASLINGER_B_CLL_WITH_CHROMOSOME_12_TRISOMY</code></td>
+<td align="left">89</td>
+<td align="left">33</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3_01</code></td>
+<td align="left">72</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>LI_WILMS_TUMOR_VS_FETAL_KIDNEY_1_DN</code></td>
+<td align="left">85</td>
+<td align="left">29</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>TOYOTA_TARGETS_OF_MIR34B_AND_MIR34C</code></td>
+<td align="left">86</td>
+<td align="left">29</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q4_01</code></td>
+<td align="left">72</td>
+<td align="left">29</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>FOURNIER_ACINAR_DEVELOPMENT_LATE_2</code></td>
+<td align="left">81</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q4</code></td>
+<td align="left">73</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q6</code></td>
+<td align="left">74</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q4</code></td>
+<td align="left">71</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_ENVELOPE_ORGANIZATION</code></td>
+<td align="left">86</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>NIKOLSKY_BREAST_CANCER_12Q24_AMPLICON</code></td>
+<td align="left">66</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>ZHANG_TLX_TARGETS_36HR_DN</code></td>
+<td align="left">85</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>MITSIADES_RESPONSE_TO_APLIDIN_DN</code></td>
+<td align="left">88</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q6_01</code></td>
+<td align="left">75</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q4_01</code></td>
+<td align="left">71</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_PORE</code></td>
+<td align="left">84</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>MORI_IMMATURE_B_LYMPHOCYTE_DN</code></td>
+<td align="left">88</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c6.all</td>
+<td align="left"><code>RB_P107_DN.V1_UP</code></td>
+<td align="left">76</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3</code></td>
+<td align="left">77</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>PUJANA_XPRSS_INT_NETWORK</code></td>
+<td align="left">86</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F4DP2_01</code></td>
+<td align="left">74</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>PUJANA_BRCA_CENTERED_NETWORK</code></td>
+<td align="left">81</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q3</code></td>
+<td align="left">72</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_REGULATION_OF_MICROTUBULE_POLYMERIZATION_OR_DEPOLYMERIZATION</code></td>
+<td align="left">85</td>
+<td align="left">26</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>表 S2 集合c1、c3.tft和h中 n 值排名最靠前的基因集</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">c1</td>
+<td align="left"><code>CHR12Q24</code></td>
+<td align="left">102</td>
+<td align="left">36</td>
+</tr>
+<tr class="even">
+<td align="left">c1</td>
+<td align="left"><code>CHR12Q23</code></td>
+<td align="left">91</td>
+<td align="left">11</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MITOTIC_SPINDLE</code></td>
+<td align="left">71</td>
+<td align="left">25</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_G2M_CHECKPOINT</code></td>
+<td align="left">76</td>
+<td align="left">24</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_E2F_TARGETS</code></td>
+<td align="left">71</td>
+<td align="left">23</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V1</code></td>
+<td align="left">67</td>
+<td align="left">22</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V2</code></td>
+<td align="left">73</td>
+<td align="left">19</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MTORC1_SIGNALING</code></td>
+<td align="left">62</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_DNA_REPAIR</code></td>
+<td align="left">65</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_UNFOLDED_PROTEIN_RESPONSE</code></td>
+<td align="left">64</td>
+<td align="left">13</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3_01</code></td>
+<td align="left">72</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q4_01</code></td>
+<td align="left">72</td>
+<td align="left">29</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q4</code></td>
+<td align="left">73</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q6</code></td>
+<td align="left">74</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q4</code></td>
+<td align="left">71</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q6_01</code></td>
+<td align="left">75</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q4_01</code></td>
+<td align="left">71</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3</code></td>
+<td align="left">77</td>
+<td align="left">27</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F4DP2_01</code></td>
+<td align="left">74</td>
+<td align="left">27</td>
+</tr>
+<tr class="even">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F1_Q3</code></td>
+<td align="left">72</td>
+<td align="left">27</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>表 S3 核心基因集完整列表</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MITOTIC_SPINDLE</code></td>
+<td align="left">71</td>
+<td align="left">25</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_G2M_CHECKPOINT</code></td>
+<td align="left">76</td>
+<td align="left">24</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_E2F_TARGETS</code></td>
+<td align="left">71</td>
+<td align="left">23</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V1</code></td>
+<td align="left">67</td>
+<td align="left">22</td>
+</tr>
+<tr class="odd">
+<td align="left">h</td>
+<td align="left"><code>HALLMARK_MYC_TARGETS_V2</code></td>
+<td align="left">73</td>
+<td align="left">19</td>
+</tr>
+<tr class="even">
+<td align="left">c1</td>
+<td align="left"><code>CHR12Q24</code></td>
+<td align="left">102</td>
+<td align="left">36</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>HASLINGER_B_CLL_WITH_CHROMOSOME_12_TRISOMY</code></td>
+<td align="left">89</td>
+<td align="left">33</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cgp</td>
+<td align="left"><code>LI_WILMS_TUMOR_VS_FETAL_KIDNEY_1_DN</code></td>
+<td align="left">85</td>
+<td align="left">30</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cgp</td>
+<td align="left"><code>TOYOTA_TARGETS_OF_MIR34B_AND_MIR34C</code></td>
+<td align="left">86</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_G1_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">23</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_G2_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">22</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.biocarta</td>
+<td align="left"><code>BIOCARTA_MCM_PATHWAY</code></td>
+<td align="left">79</td>
+<td align="left">20</td>
+</tr>
+<tr class="odd">
+<td align="left">c2.cp.kegg</td>
+<td align="left"><code>KEGG_CELL_CYCLE</code></td>
+<td align="left">87</td>
+<td align="left">24</td>
+</tr>
+<tr class="even">
+<td align="left">c2.cp.reactome</td>
+<td align="left"><code>REACTOME_TRANSPORT_OF_MATURE_TRANSCRIPT_TO_CYTOPLASM</code></td>
+<td align="left">72</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="left">c3.tft</td>
+<td align="left"><code>E2F_Q3_01</code></td>
+<td align="left">72</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">c4.cm</td>
+<td align="left"><code>MODULE_98</code></td>
+<td align="left">75</td>
+<td align="left">24</td>
+</tr>
+<tr class="odd">
+<td align="left">c4.cm</td>
+<td align="left"><code>MODULE_198</code></td>
+<td align="left">76</td>
+<td align="left">24</td>
+</tr>
+<tr class="even">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_ENVELOPE_ORGANIZATION</code></td>
+<td align="left">86</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">c5</td>
+<td align="left"><code>GO_NUCLEAR_PORE</code></td>
+<td align="left">84</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">c6</td>
+<td align="left"><code>RB_P107_DN.V1_UP</code></td>
+<td align="left">76</td>
+<td align="left">28</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>表 S4 用于支持 <em>LEM4</em> 已知的功能的补充基因集（编号与表2中的相对应）</caption>
+<thead>
+<tr class="header">
+<th align="left">集合</th>
+<th align="left">基因集</th>
+<th align="left">N</th>
+<th align="left">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">（2）调控细胞周期蛋白D-CDK4/6-Rb轴</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c6.all</td>
+<td align="left"><code>E2F1_UP.V1_UP</code></td>
+<td align="left">78</td>
+<td align="left">23</td>
+</tr>
+<tr class="odd">
+<td align="left">（3）调控ERα信号通路</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">c6.all</td>
+<td align="left"><code>MYC_UP.V1_UP</code></td>
+<td align="left">67</td>
+<td align="left">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="discuss.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dongzhuoer/thesis/edit/bookdown/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
