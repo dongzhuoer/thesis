@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   rGEO.data: rGEO.data.html
-last_built: 2022-05-03T14:29Z
+last_built: 2022-05-03T15:05Z
 urls:
   reference: https://dongzhuoer.github.io/thesis/rGEO.data/reference
   article: https://dongzhuoer.github.io/thesis/rGEO.data/articles

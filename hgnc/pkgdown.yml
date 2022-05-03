@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   hgnc: hgnc.html
-last_built: 2022-05-03T14:27Z
+last_built: 2022-05-03T15:04Z
 urls:
   reference: https://dongzhuoer.github.io/thesis/hgnc/reference
   article: https://dongzhuoer.github.io/thesis/hgnc/articles
