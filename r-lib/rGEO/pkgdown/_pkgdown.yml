@@ -1,0 +1,28 @@
+destination: pkgdown/output
+url: https://dongzhuoer.github.io/thesis/rGEO
+
+authors:
+    Zhuoer Dong:
+        href: https://dongzhuoer.com
+
+template:
+    params:
+        bootswatch: cerulean
+
+navbar:
+    structure:
+        left:  [home, intro, reference, articles, tutorials, news]
+        right: [github]
+
+reference:
+    - title: ftp path
+      desc: ftp path to GEO raw data
+      contents: ends_with("_ftp")
+    - title: read raw data
+      desc: >
+          read GSE series matrix file (contains expression data) and 
+          SOFT file (contains platform annotation)
+      contents: 
+          - starts_with("read_")
+          - starts_with("parse_")
+

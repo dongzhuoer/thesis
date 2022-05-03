@@ -1,0 +1,66 @@
+# `r hgnc %>% select(entrez_id:rna_central_ids) %>% summarise_all(. %>% is.na %>% mean) %>% reshape2::melt(measure.vars = 1:31, variable.name = 'id', value.name = 'NA_proportion') %>% as_tibble() %>% arrange(NA_proportion) %>% format_csv() %>% {str_split(., '\n')[[1]]} %>% str_replace(',', ': ') %>% {.[-1]} %>% paste0('  ', .) %>% c('NA_proportion:', .)`
+hgnc_id:
+    NA_proportion:
+        entrez_id: 0.002372766451987797
+        refseq_accession: 0.05663164011428018
+        ensembl_gene_id: 0.09406324148951625
+        vega_id: 0.23282165512565978
+        ucsc_id: 0.4097622391167498
+        pubmed_id: 0.46883928139073167
+        ena: 0.5054234661759721
+        uniprot_ids: 0.5153987700353494
+        ccds_id: 0.543000338966636
+        rgd_id: 0.5673817248559392
+        cosmic: 0.5677206914919375
+        mgd_id: 0.5694397365745
+        omim_id: 0.6101157328942909
+        pseudogene.org: 0.8160863880683744
+        rna_central_ids: 0.8303229867803011
+        orphanet: 0.8922812454602682
+        iuphar: 0.9210934095201201
+        mirbase: 0.954530046971091
+        lsdb: 0.9556680063919423
+        enzyme_id: 0.9572175681565057
+        horde_id: 0.9792746113989638
+        merops: 0.9825674301486611
+        imgt: 0.9835359062515132
+        kznf_gene_catalog: 0.9849644085032202
+        bioparadigms_slc: 0.9889593724274853
+        snornabase: 0.990291027068907
+        cd: 0.9910173841460462
+        homeodb: 0.9924458863977531
+        lncrnadb: 0.996416638419447
+        intermediate_filament_db: 0.99832937872258
+        mamit-trnadb: 0.9994673381434314
+    to_symbol:
+        entrez_id: http://www.ncbi.nlm.nih.gov/gene/, Entrez gene ID. Found within the "GENE RESOURCES" section of the gene symbol report.
+        ensembl_gene_id: http://www.ensembl.org/, Ensembl gene ID. Found within the "GENE RESOURCES" section of the gene symbol report.
+        vega_id: http://vega.sanger.ac.uk/, Vega gene ID. Found within the "GENE RESOURCES" section of the gene symbol report.
+        ucsc_id: http://genome.ucsc.edu/, UCSC gene ID. Found within the "GENE RESOURCES" section of the gene symbol report.
+        ena: http://www.insdc.org/|http://www.ncbi.nlm.nih.gov/nuccore, International Nucleotide Sequence Database Collaboration (GenBank, ENA and DDBJ) accession number(s). Found within the "NUCLEOTIDE SEQUENCES" section of the gene symbol report.
+        refseq_accession: https://www.ncbi.nlm.nih.gov/refseq, RefSeq nucleotide accession(s). Found within the "NUCLEOTIDE SEQUENCES" section of the gene symbol report.
+        ccds_id: NA, Consensus CDS ID. Found within the "NUCLEOTIDE SEQUENCES" section of the gene symbol report.
+        uniprot_ids: http://www.uniprot.org/, UniProt protein accession. Found within the "PROTEIN RESOURCES" section of the gene symbol report.
+        pubmed_id: NA, Pubmed and Europe Pubmed Central PMID(s).
+        mgd_id: http://www.informatics.jax.org/, Mouse genome informatics database ID. Found within the "HOMOLOGS" section of the gene symbol report.
+        rgd_id: http://rgd.mcw.edu/,Rat genome database gene ID. Found within the "HOMOLOGS" section of the gene symbol report.
+        lsdb: NA, The name of the Locus Specific Mutation Database and URL for the gene separated by a | character, e.g. Mutations of the ATP-binding Cassette Transporter Retina|http://www.retina-international.org/files/sci-news/abcrmut.htm
+        cosmic: NA, Symbol used within the Catalogue of somatic mutations in cancer for the gene.
+        omim_id: https://www.omim.org/entry/<ID> ,Online Mendelian Inheritance in Man (OMIM) ID
+        mirbase: http://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=<ID>, miRBase ID
+        homeodb: NA, Homeobox Database ID
+        snornabase: NA, snoRNABase ID
+        bioparadigms_slc: NA, Symbol used to link to the SLC tables database at bioparadigms.org for the gene
+        orphanet: http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=<ID>, Orphanet ID
+        pseudogene.org: NA, Pseudogene.org ID
+        horde_id: NA, Symbol used within HORDE for the gene
+        merops: NA, ID used to link to the MEROPS peptidase database
+        imgt: NA, Symbol used within international ImMunoGeneTics information system
+        iuphar: NA, The objectId used to link to the IUPHAR/BPS Guide to PHARMACOLOGY database. To link to IUPHAR/BPS Guide to PHARMACOLOGY database only use the number (only use 1 from the result objectId:1) in the example URL
+        kznf_gene_catalog: NA, ID used to link to the Human KZNF Gene Catalog
+        mamit-trnadb: NA, ID to link to the Mamit-tRNA database
+        cd: NA, Symbol used within the Human Cell Differentiation Molecule database for the gene
+        lncrnadb: NA, lncRNA Database ID
+        enzyme_id: NA, ENZYME EC accession number
+        intermediate_filament_db: NA, ID used to link to the Human Intermediate Filament Database
+        rna_central_ids: NA  

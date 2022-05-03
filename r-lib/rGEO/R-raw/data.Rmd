@@ -1,0 +1,291 @@
+---
+title: processing raw data to package data
+date: "`r Sys.Date()`"
+---
+
+```{r}
+knitr::opts_knit$set(root.dir = here::here(''))
+```
+
+
+
+# clean
+
+```{r clean, include=FALSE}
+dir(here::here('data'), full.names = T) %>% file.remove()
+rm(list = ls(envir = globalenv(), all = T))
+```
+
+
+
+# Process raw data
+
+If you find find something puzzling, refer to `R/platform.R`.
+
+```{r setup, results='hide', echo=FALSE}
+knitr::opts_chunk$set(error = T, collapse = TRUE)
+
+options(tibble.print_max = 40, tibble.width = Inf)
+```
+
+```{r}
+library(tidyverse)
+library(parallel)
+
+pkgload::load_all()
+```
+
+## prepare GPL metadata
+
+```{r}
+gpl_metas <- rGEO.data::gpl_metas
+n_all <- length(gpl_metas)
+
+sum_length <- . %>% sapply(length) %>% sum
+# print selected gpl_metas
+detail <- function(x, info_only = F) {
+	if (info_only)
+		print(gpl_metas[unique(x$accession)] %>% lapply(. %>% {.$info}))
+	else
+		print(gpl_metas[unique(x$accession)])
+}
+```
+
+## remove null
+
+```{r}
+gpl_null <- gpl_metas %>% {.[sapply(., . %>% {.$info} %>% is.null)]} %>% names %T>% {print(head(.))}
+
+gpl_metas %<>% {.[setdiff(names(.), gpl_null)]}
+```
+
+## deal with duplicated columnname
+
+```{r cache=T}
+# for all cases in which there is duplicated name, remove those name and description are both same, then manually check left case
+gpl_metas %>% lapply(. %>% {.$info}) %>% 
+	lapply(. %>% {
+		if (.$name %>% duplicated %>% any) {
+			. <- .[paste(.$name, .$description) %>% {!duplicated(.)}, ];
+		}
+		.
+	}) %>% {.[sapply(., . %>% {duplicated(.$name)} %>% any)]} %>% 
+	lapply(. %>% filter(name %in% name[duplicated(name)])) %>%
+	yaml::write_yaml('tests/testthat/output/gpl-dup-col-name.yaml', column.major = F)
+
+message('search "AlleleA_ProbeSeq in description" or "Illumina Strand 2" in description if you want to use sequence information')
+
+#" for these special accession, the second one is better (refseq or entrez)
+gpl_metas[dup_use_latter] %<>% 
+	{print(lapply(., . %>% {.$info} %>% filter(name %in% name[duplicated(name)]))); .} %>%
+	lapply(function(gpl) {
+		duplicated_name <- gpl$info$name %>% {.[duplicated(.)]};
+		col_drop <- sapply(duplicated_name, . %>% {which(gpl$info$name == .)[1]})
+		gpl$info   = gpl$info[-col_drop, ];
+		gpl$sample = gpl$sample[-col_drop];
+		
+		gpl
+	})
+
+#" for others, simply pick first is enough
+gpl_metas %<>% lapply(function(gpl) {
+	dup <- duplicated(gpl[[1]]$name)
+	if (dup %>% any) {
+		gpl$info   = gpl$info[!dup, ];
+		gpl$sample = gpl$sample[!dup]
+	}
+	
+	gpl
+}) 
+
+assertthat::assert_that(
+	gpl_metas %>% lapply(. %>% {colnames(.$sample) %>% {.[duplicated(.)]}}) %>%
+		unlist %>% unique %>% libzhuoer::print_or_T(),
+	msg = 'duplicated column names not dealt'
+)
+```
+
+## make info df to be compatible with dplyr API
+
+```{r make-info}
+info_all <- setdiff(names(gpl_metas), special$accession) %>%
+	mclapply(. %>% {add_column(gpl_metas[[.]]$info, accession = ., .before = 1)}) %>%
+	bind_rows() %>% mutate(full = paste0(name, ': ', description)) %>%
+	add_column(type = 'unknown') %T>% print
+```
+
+## different types of GPL
+
+### non human
+```{r}
+gpl_non_human <- info_all %>% filter(type == 'unknown') %>% filter_non_human() %>% 
+	filter(!duplicated(accession)) %>% {.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_non_human, 'non_human', type))
+```
+
+###  ncRNA
+```{r}
+gpl_miRNA <- info_all %>% filter(type == 'unknown') %>% filter_miRNA() %>% 
+	filter(!duplicated(accession)) %>% {.$accession} %T>% {print(head(.))} %T>% {print(head(.))}
+info_all %<>% mutate(type = ifelse(accession %in% gpl_miRNA, 'miRNA', type))
+
+gpl_circRNA <- info_all %>% filter(type == 'unknown') %>% filter_circRNA() %>% 
+	filter(!duplicated(accession)) %>% {.$accession} %T>% {print(head(.))} %T>% {print(head(.))}
+info_all %<>% mutate(type = ifelse(accession %in% gpl_circRNA, 'circRNA', type))
+```
+
+### entrez id
+```{r}
+gpl_entrez_id <- info_all %>% filter(type == 'unknown') %>% filter_entrez_id() %>%
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>%
+	{.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_entrez_id, 'entrez_id', type))
+```
+
+### entrez
+```{r}
+gpl_entrez <- info_all %>% filter(type == 'unknown') %>% filter_entrez %>% 
+    {.$full %>% unique %>% cat(sep = '\n'); .} %>%
+	{.$accession} %T>% {print(head(.))}
+
+message('we don\'t distinguish between id and symbol here')
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_entrez, 'entrez', type))
+```
+
+### ORF
+```{r}
+gpl_ORF <- info_all %>% filter(type == 'unknown') %>% filter_ORF() %>%  
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>%
+	{.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_ORF, 'ORF', type))
+```
+
+### symbol
+```{r} 
+gpl_symbol <- info_all %>% filter(type == 'unknown') %>% filter_symbol() %>%
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>%
+	{.$accession} %T>% {print(head(.))}
+
+message('For those whose sample is all empty, we still can\'t exclude the possibility that the field is name or description rather than symbol')
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_symbol, 'symbol', type))
+```
+
+### ensembl
+```{r}
+gpl_ensembl <- info_all %>% filter(type == 'unknown') %>% filter_ensembl() %>%
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>% 
+	{.$accession} %T>% {print(head(.))} 
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_ensembl, 'ensembl', type))
+```
+
+### refseq
+```{r}
+gpl_refseq <- info_all %>% filter(type == 'unknown') %>% filter_refseq() %>% 
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>%
+	{.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_refseq, 'refseq', type))
+```
+
+### genbank
+```{r}
+gpl_genbank <- info_all %>% filter(type == 'unknown') %>% filter_genbank() %>%  
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>% 
+	{.$accession} %T>% {print(head(.))}
+#" at least for GPL10348, name is better
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_genbank, 'genbank', type))
+```
+
+### unigene
+```{r}
+gpl_unigene <- info_all %>% filter(type == 'unknown') %>% filter_unigene() %>% 
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>% 
+	{.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_unigene, 'unigene', type))
+```
+
+### sequence
+```{r}
+gpl_sequence <- info_all %>% filter(type == 'unknown') %>% filter(type == 'unknown') %>% filter_sequence() %>% 
+	{.$full %>% unique %>% cat(sep = '\n'); .} %>% 
+	{.$accession} %T>% {print(head(.))}
+
+info_all %<>% mutate(type = ifelse(accession %in% gpl_sequence, 'sequence', type))
+```
+
+### code stored for future ID type
+```{r}
+	# {.$full %>% unique %>% print; .} %>%
+	# filter(!str_detect(full, fixed('description', T))) %>%  
+	# {filter(., str_detect(description, fixed('alias', T))) %>% detail; .} 
+
+	# lapply(. %>% {tibble(accession = ., symbol = select(gpl_metas[[.]]$sample, contains('symbol'))[[1]])}) %>% bind_rows() %>% filter(symbol != '') %>% filter(!(symbol %in% hgnc::hugo_symbol_all)) %>% group_by(accession) %>% summarise(n = n()) %>% arrange(desc(n))
+```
+
+### unknown
+```{r}
+gpl_unknown <- info_all %>% filter(type == 'unknown') %>% {unique(.$accession)} %T>% {print(head(.))}
+```
+
+## check for possible omission
+
+```{r}
+assertthat::assert_that(
+	n_all == list(gpl_null, special, unique(info_all$accession)) %>% sum_length,
+	msg = 'Not all platforms analysed'
+)
+
+assertthat::assert_that(
+	full_join(
+		ls(pattern = '^gpl_') %>% {.[. != 'gpl_null']} %>% 
+			{tibble(type = ., n = sapply(., . %>% get %>% length))} %>% 
+			mutate(type = str_remove(type, '^gpl_')), 
+		info_all %>% filter(!duplicated(accession)) %>% count(type) %>% ungroup(),
+		by = 'type'
+	) %>% filter(n.x != n.y) %>% libzhuoer::print_or_T(),
+	msg = 'some IDs are parsed incorrectly'
+)
+```
+
+## Sum up & use data
+
+```{r}
+gpl <- bind_rows(
+	info_all %>% filter(!duplicated(accession)) %>% select(accession, type), 
+	select(special, accession, type = database), 
+	tibble(accession = gpl_null, type = 'unknown')
+)
+
+assertthat::assert_that(
+	n_all == nrow(gpl),
+	msg = 'not all platforms included in `gpl` data'
+)
+
+usethis::use_data(gpl, overwrite = T)
+```
+
+
+# Afterward
+
+```{r reinstall}
+devtools::test()     # test the new data
+roxygen2::roxygenize() # you may also have edited data documentation
+
+system('R CMD INSTALL --no-multiarch --with-keep.source .')
+devtools::reload()   # now you can use the new data in current R session 
+```
+
+
+
+
+
+
+

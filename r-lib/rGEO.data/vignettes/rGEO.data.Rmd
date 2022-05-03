@@ -1,0 +1,46 @@
+---
+title: "Introduction to rGEO.data"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: prettydoc::html_pretty
+vignette: >
+  %\VignetteIndexEntry{Introduction to rGEO.data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+options(tibble.print_min = 6, tibble.print_max = 6)
+```
+
+This package include several data, and functions to create them.
+
+# Data
+
+```{r, eval=FALSE}
+rGEO.data::dataset
+```
+
+```{r, echo=FALSE, comment=''}
+tibble::trunc_mat(rGEO.data::dataset)
+```
+
+
+
+```{r, eval=FALSE}
+rGEO.data::platform
+```
+
+```{r, echo=FALSE, comment=''}
+tibble::trunc_mat(rGEO.data::platform)
+```
+
+```{r}
+rGEO.data::gpl_metas[1:2]
+```
+
+# Function
+
+see [function reference](../reference/index.html)

@@ -1,0 +1,10 @@
+destination: pkgdown/output
+url: https://dongzhuoer.github.io/thesis/rGEO.data
+
+authors:
+    Zhuoer Dong:
+        href: https://dongzhuoer.com
+
+template:
+    params:
+        bootswatch: cerulean

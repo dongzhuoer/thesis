@@ -1,0 +1,16 @@
+destination: pkgdown/output
+url: https://dongzhuoer.github.io/thesis/hgnc
+
+template:
+    params:
+        bootswatch: cerulean
+
+reference:
+    - title: "reshape map"
+      desc: >
+          generic interface to convert map between "long" and "wide" format
+      contents: ends_with("_map")
+    - title: "as symbol"
+      desc: >
+          convert ID (accession) of other database to HUGO gene symbol
+      contents: starts_with("as_symbol_from")

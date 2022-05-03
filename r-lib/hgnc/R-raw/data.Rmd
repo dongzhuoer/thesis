@@ -1,0 +1,90 @@
+---
+title: processing raw data to package data
+date: "`r Sys.Date()`"
+---
+
+```{r knitr-setup, include=FALSE}
+knitr::opts_knit$set(root.dir = here::here(''))
+knitr::opts_chunk$set(collapse = T)
+```
+
+
+
+# clean
+
+```{r clean, include=FALSE}
+dir(here::here('data'), full.names = T) %>% file.remove()
+rm(list = ls(envir = globalenv(), all = T))
+```
+
+
+
+# Process raw data
+
+
+`hgnc_complete_set.txt.gz` comes from https://www.genenames.org/cgi-bin/statistics#complete
+
+`gene2unigene.tsv` comes from ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2unigene
+
+
+```{r}
+hgnc_all <- readr::read_tsv('data-raw/hgnc_complete_set.txt.gz', T, libzhuoer::cols_char()) 
+hgnc <- hgnc_all %>% dplyr::filter(status == 'Approved')
+
+hugo_symbol <- hgnc$symbol;
+
+
+
+entrez2symbol <- dplyr::select(hgnc, entrez = entrez_id, symbol) %>% hgnc::qualify_map() %T>% print
+
+ensembl2symbol <- dplyr::select(hgnc, ensembl = ensembl_gene_id, symbol) %>% hgnc::qualify_map() %T>% print
+ 
+hgnc$ensembl_gene_id %>% stringr::str_extract('[^\\d]+') %>% na.omit() %>% unique
+
+entrez_or_symbol2symbol <- dplyr::bind_rows(
+	tibble::tibble(entrez_or_symbol = hugo_symbol, symbol = hugo_symbol), 
+	dplyr::rename(entrez2symbol, entrez_or_symbol = 'entrez')
+) %>% hgnc::qualify_map() %T>% print
+
+
+
+genbank2symbol <- dplyr::bind_rows(
+	dplyr::select(hgnc, symbol, genbank = 'ena'),
+	dplyr::select(hgnc, symbol, genbank = 'refseq_accession')
+) %>% hgnc::melt_map('symbol', 'genbank', '\\|') %>% dplyr::select(2:1) %T>% 
+	{message('collapsing ', length(stringr::str_subset(.[[1]], '\\.\\d+$')), ' transcripts to genes')} %T>% 
+	{message('If this number is too bug,'); .} %T>% 
+	{message('check whether different transcripts of the same gene have different symbols')} %>%
+	dplyr::mutate_at(1, . %>% stringr::str_remove('\\.\\d+$')) %>% hgnc::qualify_map() %T>% print
+
+unigene2entrez <- 'data-raw/gene2unigene.tsv.gz' %>% 
+    readr::read_tsv(T, libzhuoer::cols_char()) %>% 
+	dplyr::filter_at(2, dplyr::any_vars(stringr::str_detect(., '^Hs\\.'))) %>% 
+	dplyr::select(2, 1) %>% hgnc::qualify_map() %>%
+	dplyr::select(unigene = 1, entrez = 2) %T>% print
+
+usethis::use_data(hugo_symbol, entrez2symbol, ensembl2symbol, genbank2symbol, entrez_or_symbol2symbol, unigene2entrez, overwrite = T);
+```
+
+
+
+```{r reinstall}
+devtools::test()     # test the new data
+roxygen2::roxygenize() # you may also have edited data documentation
+
+system('R CMD INSTALL --no-multiarch --with-keep.source .')
+devtools::reload()   # now you can use the new data in current R session 
+```
+
+
+```{r map-coverage}
+mapply(
+	function(symbol, name) {
+		coverage <- symbol %>% unique %>% length %>% {./length(hgnc::hugo_symbol)};
+		message(name, ' covers ', format(coverage, F, 6), ' symbols')
+	},
+	list(hgnc::entrez2symbol$symbol, hgnc::ensembl2symbol$symbol, hgnc::genbank2symbol$symbol, 
+		 hgnc::as_symbol_from_unigene(hgnc::unigene2entrez$unigene)),
+	c('entrez  ', 'ensembl  ', 'genbank', 'unigene ')
+) -> dev.null
+```

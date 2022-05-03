@@ -1,0 +1,239 @@
+---
+title: "Introduction to hgnc"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Introduction to hgnc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = F, comment = '', collapse = TRUE)
+
+library(magrittr)
+```
+
+```{r}
+library(hgnc)
+```
+
+
+
+# quick start
+
+For impatient people, you can convert a probe-ensembl map like the following [^probe2ensembl]
+
+```{r}
+probe2ensembl <- tibble::tribble(
+  ~ID,           ~Ensembl,                                                 
+  "200064_at",   "ENSG00000096384",                                        
+  "200066_at",   "ENSG00000113141",                                        
+  "200068_s_at", "ENSG00000127022",                                        
+  "200069_at",   "ENSG00000075856",                                        
+  "200071_at",   "ENSG00000119953",                                        
+  "200076_s_at", "ENSG00000105700",                                        
+  "200077_s_at", "ENSG00000104904",                                        
+  "200078_s_at", "ENSG00000117410",                                        
+  "200082_s_at", "ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326",
+  "200084_at",   "ENSG00000110696"
+)
+
+probe2ensembl
+```
+
+[^probe2ensembl]: how I create `probe2ensembl`
+    
+    ```r
+    # read probe annotation from a GSE SOFT file
+    soft_table <- system.file("extdata/GSE19161_family.soft.gz", package = "rGEO") %>% 
+        rGEO::parse_gse_soft(verbose = F) %>% {.$table}
+    # subset part of the table for the purpose of demostration
+    probe2ensembl <- soft_table %>% dplyr::select(1, 9) %>% dplyr::slice(41:50)
+    ```
+
+to a probe-symbol map ^[Ensembl IDs which don't have corresponding HUGO symbol are discarded.]
+
+```{r}
+probe2_symbol <- probe2ensembl %>% melt_map("ID", "Ensembl", " /// ") %>%
+    dplyr::mutate("symbol" = as_symbol_from_ensembl(Ensembl)) %>%
+    cast_map("ID", "symbol", " /// ")
+
+probe2_symbol
+```
+
+Other common ID like entrez gene ID, Unigene ID, RefSeq accession are also supported.
+
+
+
+# innovation
+
+## the problem
+
+```{r}
+probe2id <- tibble::tribble(  
+	~probe, ~id,
+    "probe1", "id1 | id2",
+    "probe2", "id3"
+)
+
+probe2symbol <- tibble::tribble(  
+	~probe, ~symbol,
+    "probe1", "symbol1 | symbol2",
+    "probe2", "symbol3"
+)
+```
+
+To master this package, you need to understand the problem it aims to solve. That is, to turn something like
+
+```{r}
+probe2id
+```
+
+to 
+
+```{r}
+probe2symbol
+```
+
+
+
+## solve a simpler one
+
+```{r}
+probe2id_easy <- tibble::tribble(  
+	~probe, ~id,
+    "probe4", "id4",
+    "probe5", "id5",
+    "probe6", "id6"
+)
+
+probe2symbol_easy <- tibble::tribble(  
+	~probe, ~symbol,
+    "probe4", "symbol4",
+    "probe5", "symbol5",
+    "probe6", "symbol6"
+)
+```
+
+To point out the key difficulty, let's contrast it with a simpler one --- to turn something like 
+
+```{r}
+probe2id_easy
+```
+
+to 
+
+```{r}
+probe2symbol_easy
+```
+
+That's quite easy, you just need a id-symbol map, 
+
+```{r}
+id2symbol <- tibble::tibble(  
+    id = paste0("id", 1:6),
+    symbol = paste0("symbol", 1:6)
+) %>% dplyr::sample_frac()
+
+id2symbol
+```
+
+and use the following code ^[I deliberately shuffle the rows of `id2symbol` to show that `id2symbol` just need to provide the correct relationship between `id` and `symbol`, i.e, it doesn't necessarily maintain the same order as `probe2id`.]
+
+```{r}
+dplyr::transmute(probe2id_easy, probe, symbol = id2symbol$symbol[match(id, id2symbol$id)])
+```
+
+In the above code, we map `probe` to `symbol` in three steps:
+
+1. `dplyr::transmute` preserves `probe2id$probe` - `probe2id$id` relationship by _position_
+1. `match()` finds `probe2id$id` - `id2symbol$id` relationship by _value_
+1. `[]` finds `id2symbol$id` - `id2symbol$symbol` relationship by _position_
+
+Let's us understand the example by a concrete example of `"probe4"` to `"symbol4"`:
+
+1. 1st element of `probe2id$probe` -> 1st element of `probe2id$id`:  
+   `"probe4"` is the 1st element of `probe2id$probe`, so we look for the 1st element of `probe2id$id`, `"id4"`.
+
+1. `"id4"` in `probe2id$id` -> `"id4"` in `id2symbol$id`:  
+    `"id4"` is the 1st element of `probe2id$id`, then we look for the 1st element of `match()` (which gives the position of `probe2id$id` in `id2symbol$id` --- ``c(`r match(probe2id$id, id2symbol$id)`)`` in this case). We get `3`, so we look for the 3rd element of `id2symbol$id`, the exact value of `"id4"`.
+
+1. 3rd element of `id2symbol$id` -> 3rd element of `id2symbol$symbol`:  
+    finally, `"id4"` is the 3rd element of ``id2symbol$id`, thus we look for the 3rd element of `id2symbol$symbol`, `"symbol4"`.
+
+
+
+## key difficulty 
+
+Back the original problem, you can find that its fairly easy to "replace" `"id4"` with `"symbol4"`, `"id5"` with `"symbol5"`, etc (thanks to `match()`). But how can you "replace" the `"id1"` and `"id2"` inside `"id1 | id2"`? 
+
+That is what we meet exactly, as in the 9th line of `probe2ensembl`.
+
+```{r}
+probe2ensembl %>% dplyr::slice(9)
+```
+
+If you think it's a piece of cake, you may have some misunderstanding: 
+
+- Computer is very foolish, it can't convert `"id1 | id2"` to `"symbol1 | symbol2"` as you can easily achieve even without thinking. In programming, the only way is to search `"id1"` in `"id1 | id2"` and replace with `"symbol"` if it find one, then search `"id2"`, `"id3"`, etc. This will cause a severe poor performance.
+
+- As for replacing all `"id"` with `"symbol"`, I use `id2symbol` just to simplify the problem, the id-symbol map in the real world is usually something like:
+
+  ```{r}
+  hgnc::ensembl2symbol %>% dplyr::sample_n(3)
+  ```
+
+## solution
+
+Inspired by [**reshape2**](https://github.com/hadley/reshape), I choose to **melt** the **wide** map
+
+```{r}
+probe2id_wide <- probe2id
+
+probe2id_wide
+```
+
+to a **long** map.
+
+```{r}
+probe2id_long <- probe2id_wide %>% melt_map("probe", "id", " \\| ")
+
+probe2id_long
+```
+
+
+Then map id to symbol to get a new **long** map, following the way we solve the simpler problem abobe.
+
+```{r}
+probe2symbol_long <- probe2id_long %>% 
+    dplyr::transmute(probe, symbol = id2symbol$symbol[match(id, id2symbol$id)])
+
+probe2symbol_long
+```
+
+Finally **cast** to a new **wide** map
+
+```{r}
+probe2symbol_wide <- probe2symbol_long %>% cast_map("probe", "symbol", " /// ")
+
+probe2symbol_wide   # now it's identical to probe2symbol
+```
+
+In short, A-B wide map -> A-B long map -> A-C long map -> A-C wide map.
+
+
+
+# real world
+
+In above discussion, I abstract away many details to focus on core idea. Things get more complicated in real world:
+
+- The separator is not definite (it can be ` `, ` 、`, ` \\\ `), so I use [reverse match](https://github.com/dongzhuoer/thesis/r-lib/rGEO/blob/master/R/platform.R#L184-L189).
+- I omit where `id2symbol` comes from (at least not falls from sky). Actually I **melt** [hgnc_complete_set.txt.gz](https://github.com/dongzhuoer/thesis/r-lib/hgnc/blob/master/data-raw/hgnc_complete_set.txt.gz) to create `entrez2symbol`, `ensembl2symbol`, etc.
+- I use `symbol = id2symbol$symbol[match(id, id2symbol$id)]` in the above code for universality, but it looks quiet obscured even though I have explained in great detail. Thus I add some syntax sugar (`?as_symbol`), so that you can see the simple and beautiful code in the beginning.
+
+Armed by with above **weapon**, the package can serves as the workhorse of [**rGEO**](https://github.com/dongzhuoer/thesis/r-lib/rGEO) to transform any user-supplied GPL file to standard chip file ready for GSEA.

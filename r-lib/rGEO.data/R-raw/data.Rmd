@@ -1,0 +1,132 @@
+---
+title: processing raw data to package data
+date: "`r Sys.Date()`"
+---
+
+```{r knitr-setup, include=FALSE}
+knitr::opts_knit$set(root.dir = here::here(''))
+```
+
+
+
+# clean
+
+```{r clean, include=FALSE}
+dir(here::here('data'), full.names = T) %>% file.remove()
+rm(list = ls(envir = globalenv(), all = T))
+```
+
+
+
+# Process raw data
+
+```{r setup, include=FALSE}
+internet <- T;
+knitr::opts_chunk$set(collapse = T)
+```
+
+I use two kinds of cache in this document (three if you include `GPL-html/`).
+
+## dataset
+
+For `dataset`, I use knitr's cache mechanism. Fairly simple, you just need to add 
+md5sum of input file to chunk options, knitr will takes care of the rest for you.  
+
+But remember to use the data in another chunk, otherwise it won't run.
+
+`gds_result.txt`: click [here](https://www.ncbi.nlm.nih.gov/gds?term=(%22expression%20profiling%20by%20array%22%5BDataSet%20Type%5D)%20AND%20%22homo%20sapiens%22%5BOrganism%5D).
+    Or query `("expression profiling by array"[DataSet Type]) AND "homo sapiens"[Organism]`
+    in [GEO DataSets](https://www.ncbi.nlm.nih.gov/gds). 
+   
+
+```{r make-dataset, cache=T, input_md5=tools::md5sum('inst/extdata/gds_result.txt')}
+dataset <- rGEO.data::read_summary('inst/extdata/gds_result.txt') %T>% print 
+```
+
+```{r use-dataset}
+usethis::use_data(dataset, overwrite = T)
+```
+
+## platform
+
+download `.tsv` files of Platform and Series, click `Homo sapiens` in https://www.ncbi.nlm.nih.gov/geo/browse/?view=platforms
+
+
+```{r download-tsv-files, eval=internet, cache=T, month=format(Sys.Date(), '%Y-%m')}
+# update monthly
+geo_tsv <- function(type = c('platforms', 'series'), page = 1, tax_id = '9606') {
+    paste0('https://www.ncbi.nlm.nih.gov/geo/browse/?view=', type, '&tax=', tax_id, '&mode=tsv&page=', page, '&display=5000')
+}
+
+parallel::mcmapply(download.file, geo_tsv('platforms', 1:2), paste0('data-raw/geo-tsv/platform-', 1:2, '.tsv'))
+# parallel::mcmapply(download.file, geo_tsv('series', 1:9),    paste0('data-raw/geo-tsv/series-',   1:9, '.tsv'))
+```
+
+
+```{r platform}
+platform <- dir('data-raw/geo-tsv', 'platform', full.names = T) %>% 
+	lapply(readr::read_tsv, T, readr::cols(.default = 'c')) %>% dplyr::bind_rows() %>% 
+	dplyr::filter(Taxonomy == 'Homo sapiens') %T>% print
+
+usethis::use_data(platform, overwrite = T)
+```
+
+## gpl_metas
+
+```{r download-GPL-html}
+GPL_html_dir <- 'data-raw/GPL-html';
+dir(GPL_html_dir, full = T) %>% {.[file.size(.) <10]} %>% file.remove
+
+download_GPL_html <- function(){
+    rGEO.data::platform$Accession %>% 
+    {setdiff(., dir(GPL_html_dir) %>% stringr::str_extract('GPL\\d+'))} %>%
+    parallel::mclapply(. %>% {
+        input  <- paste0('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', .);
+        output <- paste0(GPL_html_dir, '/', ., '.html');
+        if (!file.exists(output)) download.file(input, output)
+    }, mc.cores = 16);
+}
+download_GPL_html()
+```
+
+Here I manually maintain a cache. One reason is to save file in case all old 
+data get cleaned. Another is that there are two differences, one is old and new 
+chunk option, whether input dir mtime or input files; the other is the difference 
+between the inut files and our cache. Although they should be the same, there is 
+always accidents which we might never understand.
+
+```{r gpl_metas}
+cache <- readr::read_rds('data-raw/rds/gpl_metas.rds.gz')
+
+to_process <- setdiff(stringr::str_remove(dir(GPL_html_dir), '.html$'), names(cache))
+gpl_html_files <- 
+
+if (length(to_process) > 0) {
+    new <- paste0(GPL_html_dir, '/', to_process, '.html') %>% 
+        parallel::mclapply(rGEO.data::read_gpl_html) %T>% {names(.) <- to_process}
+    
+    gpl_metas <- c(new, cache) %T>% readr::write_rds('data-raw/rds/gpl_metas.rds.gz', 'gz')
+} else {
+    gpl_metas <- cache
+}
+
+usethis::use_data(gpl_metas, overwrite = T)
+```
+
+
+
+# Afterward
+
+```{r reinstall}
+devtools::test()     # test the new data
+roxygen2::roxygenize() # you may also have edited data documentation
+
+system('R CMD INSTALL --no-multiarch --with-keep.source .')
+devtools::reload()   # now you can use the new data in current R session 
+```
+
+
+
+
+
+

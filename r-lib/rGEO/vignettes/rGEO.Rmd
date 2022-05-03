@@ -1,0 +1,109 @@
+---
+title: "Introduction to rGEO"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: prettydoc::html_pretty
+vignette: >
+  %\VignetteIndexEntry{Introduction to rGEO}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+options(tibble.print_min = 6, tibble.max_extra_cols = 1)
+```
+
+```{r}
+library(rGEO)
+```
+
+
+
+# quick start
+
+You can find raw data at https://www.ncbi.nlm.nih.gov/geo/browse/ ^[search for 
+    `GSE***`, download files from the `Download family` section at the bottom.],
+    or use the following handy tools:
+    
+```{r}
+gse_soft_ftp('GSE51280')
+
+gse_matrix_ftp('GSE51280')
+```
+    
+Then you can read them:
+
+```{r}
+# expression matrix file
+read_gse_matrix(system.file('extdata/GSE51280_series_matrix.txt.gz', package = 'rGEO'))
+
+# SOFT (chip annotation) file
+read_gse_soft(system.file('extdata/GSE51280_family.soft.gz', package = 'rGEO'))
+```
+
+
+
+# A little deeper
+
+Let's go a little deeper to see how this works. 
+
+The package mainly contains functions for   
+   1. telling the ftp path to GSE raw data: see `gds_ftp()` and `gpl_soft_ftp()`  
+   1. reading these files, including expression matrix file and SOFT (chip 
+        annotation) file, see below.  
+
+## expression matrix file
+
+reading expression matrix file is quiet straightforward, you just need to locate
+    where the information lies, and `readr::read_tsv()` would take care of the 
+    rest for you.
+
+```{r eval=FALSE}
+read_gse_matrix
+```
+
+```{r results='asis', echo=FALSE}
+cat('```r\n')
+read_gse_matrix
+cat('```\n')
+```
+
+
+
+## SOFT (chip annotation) file
+
+SOFT (chip annotation) file is a lot more harder to deal with. In short, you 
+    have to dig useful information first:
+    
+```{r}
+parse_gse_soft(system.file('extdata/GSE51280_family.soft.gz', package = 'rGEO'), F)
+```
+
+and convert that to a uniform format. Almost the whole package does the latter, 
+    refer to `vignette('probe2symbol')` for more details. 
+
+By the way, for both `parse_gse_soft()` and `read_gse_soft()`, you can add 
+    `verbose = T` to make the process more clear.
+
+
+
+# Innovation
+
+> The format of SOFT (chip annotation) file is really a terrible messy, or rather, aganist humanity. Even though I have developed this handy package, I never want to touch it again.
+
+The central problem is that we don't know each probe corresponding to which gene. 
+
+The annotation (TSV) contains various information, such as Entrez Gene ID、Ensembl gene ID、INSDC accession、RefSeq accession (nucleotide), so I developed [hgnc](https://github.com/dongzhuoer/thesis/r-lib/hgnc) to universely convert them to [HUGO](https://www.genenames.org/) gene symbol. That is actually a fairly easy task, what real drives one crazy is the messy column names. Given the following snippet ^[the left part is column name, and the right part is explanation], how can you make sure which columns exactly store Entrez Gene ID? ......
+
+```
+EntrezGeneID: EntrezGene ID
+ORF: Entrez Gene identifier for the gene represented
+GeneID: Entrez Gene identification number
+UniGene_ID: UniGene Database Accession Number (http://www.ncbi.nlm.nih.gov/sites/entrez?db=unigene)
+ORF: Entrez GENE ID
+Entrez_Gene_ID: Entrez gene ID
+GENE: Entrez GeneID of sequence used to design cDNA probe
+Gene_ID: id in NCBI Entrez Gene database
+```

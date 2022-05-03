@@ -1,0 +1,30 @@
+Package: rGEO
+Type: Package
+Title: read GEO (Gene Expression Omnibus) raw data
+Version: 0.2.0
+Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
+    role = c("aut", "cre"))
+Description: refer to https://github.com/dongzhuoer/thesis/r-lib/rGEO
+URL: https://dongzhuoer.github.io/thesis/rGEO, https://github.com/dongzhuoer/thesis/r-lib/rGEO
+BugReports: https://github.com/dongzhuoer/thesis/r-lib/rGEO/issues
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE, roclets=c('rd', 'collate', 'namespace'))
+Imports:
+    hgnc,
+    magrittr,
+    readr,
+    dplyr,
+    stringr,
+    tibble,
+    rvest
+Suggests: 
+    prettydoc,
+    rGEO.data
+Remotes:
+    dongzhuoer/thesis/r-lib/libzhuoer,
+    dongzhuoer/thesis/r-lib/hgnc,
+    dongzhuoer/thesis/r-lib/rGEO.data
+VignetteBuilder: knitr, rmarkdown

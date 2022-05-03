@@ -1,0 +1,32 @@
+
+1. Acute alcohol consumption effect on whole blood (control group): time course
+Analysis of blood from subjects administered orange juice w/o alcohol. Blood collected at time points corresponding to collection times for the alcohol group in GDS4938. These results, together with those from GDS4938, provide insight into molecular response of blood during acute ethanol exposure.
+Organism:	Homo sapiens
+Type:		Expression profiling by array, transformed count, 5 individual, 2 protocol, 5 time sets
+Platform: GPL570 Series: GSE20489 25 Samples
+FTP download: GEO (CEL) ftp://ftp.ncbi.nlm.nih.gov/geo/datasets/GDS6nnn/GDS6177/
+DataSet		Accession: GDS6177	ID: 6177
+
+2. PI3K/mTOR Inhibitor NVP-BEZ235 and taxotere effects on prostate cancer xenograft tumors
+Analysis of DU145 xenograft tumors in NOD/SCID mice treated with NVP-BEZ235, taxotere, or both. NVP-BEZ235 targets prostate cancer progenitor cells. Taxotere targets the bulk tumor. Results provide insight into potential biomarkers associated with cancer stem cells in these xenograft tumors.
+Organism:	Homo sapiens
+Type:		Expression profiling by array, count, 4 agent sets
+Platform: GPL570 Series: GSE49232 4 Samples
+FTP download: GEO (CEL) ftp://ftp.ncbi.nlm.nih.gov/geo/datasets/GDS5nnn/GDS5804/
+DataSet		Accession: GDS5804	ID: 5804
+
+3. Expression data of influenza A infected human macrophages
+(Submitter supplied) Human disease caused by highly pathogenic avian influenza (HPAI) H5N1 can lead to a rapidly progressive viral pneumonia leading to acute respiratory distress syndrome. There is increasing evidence suggests a role for virus-induced cytokine dysregulation in contributing to the pathogenesis of human H5N1 disease. The key target cells for the virus in the lung are the alveolar epithelium and alveolar macrophages, and previous data has shown that compared to seasonal human influenza viruses, equivalent infecting doses of H5N1 viruses markedly up-regulate pro-inflammatory cytokines in both primary cell types in vitro. more...
+Organism:	Homo sapiens
+Type:		Expression profiling by array
+Dataset: GDS3595 Platform: GPL6244 27 Samples
+FTP download: GEO (CEL, CHP) ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE18nnn/GSE18816/
+Series		Accession: GSE18816	ID: 200018816
+
+4. Renal Cell Carcinoma Differential Expression
+(Submitter supplied) We investigated the changes in gene expression accompanying the development and progression of kidney cancer using 31,500 element complementary DNA arrays. We measured expression profiles for paired neoplastic and non-cancerous renal epithelium samples from 37 individuals. Using an experimental design optimized for factoring out technological and biological noise, and an adapted statistical test, we find 1738 differentially expressed cDNAs with an expected number of 6 false positives. more...
+Organism:	Homo sapiens
+Type:		Expression profiling by array
+Platforms: GPL10 GPL9 342 Samples
+FTP download: GEO ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSEnnn/GSE3/
+Series		Accession: GSE3	ID: 200000003
