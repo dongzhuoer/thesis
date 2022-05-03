@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   rGEO: rGEO.html
-last_built: 2022-05-03T15:04Z
+last_built: 2022-05-03T15:12Z
 urls:
   reference: https://dongzhuoer.github.io/thesis/rGEO/reference
   article: https://dongzhuoer.github.io/thesis/rGEO/articles

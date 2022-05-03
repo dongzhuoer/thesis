@@ -1,0 +1,10 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  hgnc: hgnc.html
+last_built: 2022-05-03T15:25Z
+urls:
+  reference: https://dongzhuoer.github.io/thesis/hgnc/reference
+  article: https://dongzhuoer.github.io/thesis/hgnc/articles
+
