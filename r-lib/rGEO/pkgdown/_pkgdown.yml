@@ -1,18 +1,21 @@
 destination: pkgdown/output
-url: https://dongzhuoer.github.io/thesis/rGEO
-
-authors:
-    Zhuoer Dong:
-        href: https://dongzhuoer.com
+url: https://dongzhuoer.github.io/thesis/rGEO.data
 
 template:
     params:
         bootswatch: cerulean
 
-navbar:
-    structure:
-        left:  [home, intro, reference, articles, tutorials, news]
-        right: [github]
+authors:
+    Zhuoer Dong:
+        href: https://dongzhuoer.com
+
+repo:
+  url:
+    home: https://github.com/dongzhuoer/thesis/tree/master/r-lib/rGEO.data
+    source: https://github.com/dongzhuoer/thesis/tree/master/r-lib/rGEO.data
+    issue: https://github.com/dongzhuoer/thesis/issues/
+    user: https://github.com/dongzhuoer
+
 
 reference:
     - title: ftp path

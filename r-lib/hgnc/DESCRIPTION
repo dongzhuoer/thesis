@@ -5,8 +5,8 @@ Version: 0.2.1
 Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
     role = c("aut", "cre"))
 Description: refer to https://github.com/dongzhuoer/thesis/r-lib/hgnc
-URL: https://dongzhuoer.github.io/thesis/hgnc, https://github.com/dongzhuoer/thesis/r-lib/hgnc
-BugReports: https://github.com/dongzhuoer/thesis/r-lib/hgnc/issues
+URL: https://dongzhuoer.github.io/thesis/hgnc
+BugReports: https://github.com/dongzhuoer/thesis/issues
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

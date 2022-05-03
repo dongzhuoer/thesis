@@ -5,6 +5,17 @@ template:
     params:
         bootswatch: cerulean
 
+authors:
+    Zhuoer Dong:
+        href: https://dongzhuoer.com
+
+repo:
+  url:
+    home: https://github.com/dongzhuoer/thesis/tree/master/r-lib/hgnc
+    source: https://github.com/dongzhuoer/thesis/tree/master/r-lib/hgnc
+    issue: https://github.com/dongzhuoer/thesis/issues/
+    user: https://github.com/dongzhuoer
+
 reference:
     - title: "reshape map"
       desc: >

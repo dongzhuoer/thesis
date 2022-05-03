@@ -5,8 +5,8 @@ Version: 0.2.0
 Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
     role = c("aut", "cre"))
 Description: refer to https://github.com/dongzhuoer/thesis/r-lib/rGEO
-URL: https://dongzhuoer.github.io/thesis/rGEO, https://github.com/dongzhuoer/thesis/r-lib/rGEO
-BugReports: https://github.com/dongzhuoer/thesis/r-lib/rGEO/issues
+URL: https://dongzhuoer.github.io/thesis/rGEO
+BugReports: https://github.com/dongzhuoer/thesis/issues
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

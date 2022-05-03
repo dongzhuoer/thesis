@@ -1,13 +1,20 @@
 destination: pkgdown/output
 url: https://dongzhuoer.github.io/thesis/qGSEA
 
+template:
+    params:
+        bootswatch: cerulean
+
 authors:
     Zhuoer Dong:
         href: https://dongzhuoer.com
 
-template:
-    params:
-        bootswatch: cerulean
+repo:
+  url:
+    home: https://github.com/dongzhuoer/thesis/tree/master/r-lib/qGSEA
+    source: https://github.com/dongzhuoer/thesis/tree/master/r-lib/qGSEA
+    issue: https://github.com/dongzhuoer/thesis/issues/
+    user: https://github.com/dongzhuoer
 
 reference:
     - title: quick start
