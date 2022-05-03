@@ -23,7 +23,7 @@ This package aims to make preparing GSEA [^install] input files as easy as possi
 shiny::runApp(system.file('shiny/app.R', package = 'qGSEA'))
 ```
 
-The app's usage should be pretty straightforward ^[You just need to click anywhere you like and it would show useful hint.], and there is a detailed [guide](https://bookdown.dongzhuoer.com/dongzhuoer/thesis/result.html#quick-run-GSEA) with screenshots.
+The app's usage should be pretty straightforward ^[You just need to click anywhere you like and it would show useful hint.], and there is a detailed [guide](https://dongzhuoer.github.io/thesis/gitbook/result.html#quick-run-GSEA) with screenshots.
 
 
 

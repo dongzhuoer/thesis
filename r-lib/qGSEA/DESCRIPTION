@@ -5,7 +5,7 @@ Version: 0.3.0
 Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
     role = c("aut", "cre"))
 Description: refer to https://github.com/dongzhuoer/thesis/r-lib/qGSEA
-URL: https://dongzhuoer.github.io/thesis/thesis/r-lib/qGSEA, https://github.com/dongzhuoer/thesis/r-lib/qGSEA
+URL: https://dongzhuoer.github.io/thesis/r-lib/qGSEA, https://github.com/dongzhuoer/thesis/r-lib/qGSEA
 BugReports: https://github.com/dongzhuoer/thesis/r-lib/qGSEA/issues
 License: file LICENSE
 Encoding: UTF-8

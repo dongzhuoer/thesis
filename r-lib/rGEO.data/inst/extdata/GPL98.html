@@ -1,0 +1,864 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    
+    <style type="text/css">
+      a { text-decoration: none; }
+	.bordergc {background-color: #6699CC;}
+	.bordergd {background-color: #B6C7E5;}
+	.borderge {background-color: #EEF3FB;}
+	.bordergf {background-color: #FFFFFF;}
+	.bordergg {background-color: #CCCCCC;}
+      .small8b { font-size:8pt;
+                font-family: ariel,helvetica,sans-serif;
+                color:#6633cc;
+              }
+      .small8db { font-size:8pt;
+                font-family: ariel,helvetica,sans-serif;
+                color:#4411aa;
+              }
+
+    </style>
+    <META http-equiv="Content-Type"
+      content="text/html; charset=UTF-8">
+    <META name="keywords"
+      CONTENT="NCBI GEO Gene Expression Omnibus microarray oligonucleotide array SAGE">
+    <META name="description"
+      content="NCBI's Gene Expression Omnibus (GEO) is a public archive and resource for gene expression data.">
+<meta name="ncbi_phid" content="075157C6AB7C03210000000000000001">
+<meta name="ncbi_sessionid" content="075157C6AB7C0321_0000SID">
+
+    <TITLE>
+    GEO Accession viewer
+    </TITLE>
+    <link rel="stylesheet"
+      href="/corehtml/ncbi.css">
+    <!-- GEO_SCRIPT -->
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/coreweb/javascript/imagemouseover.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/coreweb/javascript/show_message.js"></SCRIPT>
+
+<script type="text/javascript" src="/corehtml/jsutils/utils.1.js"></script>
+
+<script type="text/javascript" src="/corehtml/jsutils/remote_data_provider.1.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/geo/js/help_def_messages.js"></SCRIPT>
+
+
+
+<LINK  rel = STYLESHEET href = "../info/geo_style.css" Type  = "text/css" >
+<link rel="stylesheet" type="text/css" href="acc.css" />
+  <script language="Javascript">
+
+  function OnFormFieldChange()
+  {
+    var view = document.getElementById("view");
+
+    if(document.getElementById("ViewOptions").form.value == 'html')
+    {
+        view.remove(3);
+        view.remove(2);
+    }
+    else
+    {
+        var NewOption = document.createElement("OPTION");
+
+        NewOption.text = "Full";
+        NewOption.value = "full";
+
+        try
+        {
+            view.add(NewOption, null);
+        }
+        catch(ex)
+        {
+            view.add(NewOption);
+        }
+
+        NewOption = document.createElement("OPTION");
+
+        NewOption.text = "Data";
+        NewOption.value = "data";
+
+        try
+        {
+            view.add(NewOption, null);
+        }
+        catch(ex)
+        {
+            view.add(NewOption);
+        }
+    }
+  }
+
+  function SubmitViewOptionsForm()
+  {
+	var form = document.forms.ViewOptions;
+    if(form.form.value == 'html')
+    {
+		form.form.setAttribute('disabled','disabled');
+		if (form.view.value == 'quick') {
+			form.view.setAttribute('disabled','disabled');
+		}
+		if (form.targ.value == 'self') {
+			form.targ.setAttribute('disabled','disabled');
+		}
+        var token = document.getElementById("token_input");
+        if (token) {
+            form.token.value = token.value;
+        } else {
+            form.token.setAttribute('disabled','disabled');
+        }
+        form.submit();
+    }
+    else
+    {
+        window.open("acc.cgi?acc=" + form.acc.value + "&targ=" + form.targ.value +
+                  "&form=" + form.form.value + "&view=" + form.view.value, "_self");
+    }
+
+    return false;
+  }
+  
+  function ViewOptionsFormKeyDown(event)
+  {
+	if (event == undefined)
+	{    
+		event = window.event;
+	}
+	if (event.keyCode == 13)
+	{
+		SubmitViewOptionsForm();
+		return false;
+	}
+  };
+
+  function OpenFTP(url)
+  {
+    window.open(url, '_blank');
+  }
+
+  function OpenLink(url, where)
+  {
+    window.open(url, where);
+  }
+
+  utils.addEvent(window, "load", OnFormFieldChange)
+  </script>
+
+</head>
+<body background="/coreweb/template1/pix/bg_main3.gif" topmargin="20" marginheight="20">
+
+
+<script type="text/javascript" src="/core/jig/1.15.0/js/jig.min.js"></script>
+<script type="text/javascript" src="/corehtml/pmc/granthub/v0/granthubsearch.min.js"></script>
+<script type="text/javascript" src="/geo/js/dd_menu.js"></script>
+<!-- Global alerts -->
+<script type="text/javascript">
+    jQuery.getScript("/core/alerts/alerts.js", function () {
+        galert(['#galerts_table','body > *:nth-child(1)'])
+    });
+</script>
+	<table width="740" border="0" cellspacing="0" cellpadding="0" align="center" >
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><a href="/"><img src="/geo/img/ncbi_logo.gif" alt="NCBI Logo" width="145" height="66" border="0"></a></td>
+							<td width="100%" align="center" valign="middle" nowrap background="/coreweb/template1/pix/top_bg_white.gif"><img src="/coreweb/template1/pix/pixel.gif" width="550" height="1" alt="" border="0"><br>
+								<a href="/geo/"><img src="/geo/img/geo_main.gif" alt="GEO Logo" border="0"></a>
+							</td>
+							<td align="right" background="/coreweb/template1/pix/top_bg_white.gif"><img src="/coreweb/template1/pix/top_right.gif" alt="" width="5" height="66" border="0"></td>
+						</tr>
+					</table>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><img src="/coreweb/template1/pix/top2_left.gif" width="601" height="2" alt="" border="0"></td>
+							<td width="100%" background="/coreweb/template1/pix/top2_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+							<td align="right"><img src="/coreweb/template1/pix/top2_right.gif" alt="" width="14" height="2" border="0"></td>
+						</tr>
+					</table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="galerts_table"/>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><img src="/coreweb/template1/pix/top3_ulm_no_a.gif" width="145" height="16" alt="" border="0" usemap="#unlmenu" name="unl_menu_pix"></td>
+							<td background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif"><img src="/coreweb/template1/pix/top3_mainmenu_left.gif" width="3" height="16" alt="" border="0"></td>
+							<td width="100%" valign="middle" nowrap background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif">
+
+					<!-- GEO Navigation -->
+			<ul id="geo_nav_bar">
+				<li><a href="#">GEO Publications</a>
+					<ul class="sublist">
+						<li><a href="/geo/info/GEOHandoutFinal.pdf">Handout</a></li>
+						<li><a href="http://nar.oxfordjournals.org/content/41/D1/D991.full">NAR 2013 (latest)</a></li>
+						<li><a href="http://nar.oupjournals.org/cgi/content/full/30/1/207?ijkey=oxMPOWseARs7o&amp;keytype=ref&amp;siteid=nar">NAR 2002 (original)</a></li>
+						<li><a href="/pmc/3531084,3341798,3013736,2686538,2270403,1669752,1619900,1619899,539976,99122">All publications</a></li>
+					</ul>
+				</li>
+				<li><a href="/geo/info/faq.html">FAQ</a></li>
+				<li><a href="/geo/info/MIAME.html" title="Minimum Information About a Microarray Experiment">MIAME</a></li>
+				<li><a href="mailto:geo@ncbi.nlm.nih.gov">Email GEO</a></li>
+			</ul>
+			<!-- END GEO Navigation -->
+
+                    </td>
+                    <td background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif" align="right"><img src="/coreweb/template1/pix/top3_mainmenu_right.gif" width="5" height="16" alt="" border="0"></td>
+                </tr>
+            </table>
+            
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                    <td><img src="/coreweb/template1/pix/top4_ulm_left.gif" width="145" height="4" alt="" border="0"></td>
+                    <td width="100%" background="/coreweb/template1/pix/top4_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+                    <td align="right" background="/coreweb/template1/pix/top4_mid_bg.gif"><img src="/coreweb/template1/pix/top4_ulm_right.gif" width="5" height="4" alt="" border="0"></td>
+                </tr>
+            </table>
+    
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                    <td width=1 background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" alt="" width="4" height="3" border="0"></td>
+                    <td width="10000" bgcolor="#F0F8FF">
+                        <table cellpadding="0" cellspacing="0" width="100%"><tr><td><font class="Top_Navigation_text" color="#2F6E87" face="Verdana" size="+1">&nbsp;&nbsp;&nbsp;<a href="/">NCBI</a> &gt; <a href="/geo"><font color="">GEO</font></a> &gt; <a href="acc.cgi"><b>Accession Display</b></a><a href="javascript:RPopUpWindow_Set(geologinbar_location,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></font></td>
+<td align="right">Not logged in | <a href="/geo/submitter?ix=1BqJmWXcispewIZvuCHiKtPkTFxJV8rxZYlrMdmUZaHcVpbJn5iFWXXHsEtLKvneQuY7F-XukAF8-9v">Login</a><a href="javascript:RPopUpWindow_Set(geologinbar_login,260,200,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr></table>
+                    </td>
+                    <td width=1 background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" width="4" height="3" alt="" border="0"></td>
+                </tr>
+                <tr>
+                    <td background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" width="4" height="1" alt="" border="0"></td>
+                    <td width="10000" bgcolor="#E0EEEE"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+                    <td align="right" background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" alt="" width="4" height="1" border="0"></td>
+                </tr>
+
+                <tr>
+                    <td background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" width="4" height="3" alt="" border="0"></td>
+                    <td width="100%" bgcolor="White">
+                        <table width="98%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="right" width="100%">
+                                        <tr>
+                                            <td>
+
+ <script type="text/javascript" src="acc.js"></script>
+ <span id="msg_err" style="color:red"></span>
+ <span id="msg_info" style="color:blue"></span>
+<table cellpadding="0" cellspacing="0" style="border: 1px solid #C0F8FF"><tr><td><img alt=" " height="35" src="/coreweb/template1/pix/pixel.gif" width="1"></td>
+<td bgcolor="#F0F8FF" width="100%"><font color="#0066CC" face="Arial" size="1"><div id="HelpMessage" style="font: 11px/11px arial, sans-serif"><strong>GEO help:</strong> Mouse over screen elements for information.</div></font></td>
+</tr></table>
+<form action="acc.cgi" enctype="application/x-www-form-urlencoded" id="ViewOptions" method="POST" name="ViewOptions" target="_self"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td></td>
+<td bgcolor="#CCCCCC" nowrap valign="middle" width="100%"><table align="left" border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><input id="token" name="token" type="hidden" value=""><label for="scope">Scope: </label><select id="scope" name="targ" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_scope)" style="font-size: 10px"><option selected value="self">Self</option>
+<option value="gpl">Platform</option>
+<option value="gsm">Samples</option>
+<option value="gse">Series</option>
+<option value="all">Family</option>
+</select>
+&nbsp;&nbsp;<label for="form">Format: </label><select id="form" name="form" onchange="OnFormFieldChange()" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_format)" style="font-size: 10px"><option value="html">HTML</option>
+<option value="text">SOFT</option>
+<option value="xml">MINiML</option>
+</select>
+&nbsp;&nbsp;<label for="view">Amount: </label><select id="view" name="view" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_amount)" style="font-size: 10px"><option value="brief">Brief</option>
+<option selected value="quick">Quick</option>
+</select>
+&nbsp;<label for="geo_acc">GEO accession: </label><input id="geo_acc" name="acc" onkeydown="ViewOptionsFormKeyDown(event)" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_acc)" style="font-size: 10px" type="text" value="GPL98">&nbsp;&nbsp;</td>
+<td valign="middle"><img alt="Go" border="0" onclick="SubmitViewOptionsForm()" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_go)" src="/geo/img/buttons/go_button.gif"></td>
+</tr></table></td></tr></table></td>
+</tr></table></form>
+    <table><tr><td><table cellpadding="2" cellspacing="0" width="600"><tr bgcolor="#cccccc" valign="top"><td colspan="2"><table width="600"><tr><td><strong class="acc" id="GPL98"><a href="/geo/query/acc.cgi?acc=GPL98" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">Platform GPL98</a></strong></td>
+<td></td>
+<td align="right" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_gds)"><a href="/gds/?term=GPL98[Accession]">Query DataSets for GPL98</a></td>
+</tr></table></td></tr>
+<tr valign="top"><td>Status</td>
+<td>Public on Mar 11, 2002</td>
+</tr>
+<tr valign="top"><td nowrap>Title</td>
+<td style="text-align: justify">[Hu35KsubA] Affymetrix Human 35K SubA Array</td>
+</tr>
+<tr valign="top"><td nowrap>Technology type</td>
+<td>in situ oligonucleotide</td>
+</tr>
+<tr valign="top"><td nowrap>Distribution</td>
+<td>commercial</td>
+</tr>
+<tr valign="top"><td nowrap>Organism</td>
+<td><a href="/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=9606" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_organismus)">Homo sapiens</a></td>
+</tr>
+<tr valign="top"><td nowrap>Manufacturer</td>
+<td style="text-align: justify">Affymetrix</td>
+</tr>
+<tr valign="top"><td nowrap>Manufacture protocol</td>
+<td style="text-align: justify">see manufacturer's web site<br></td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td nowrap>Description</td>
+<td style="text-align: justify">Affymetrix submissions are typically submitted to GEO using the GEOarchive method described at <a href="http://www.ncbi.nlm.nih.gov/projects/geo/info/geo_affy.html">http://www.ncbi.nlm.nih.gov/projects/geo/info/geo_affy.html</a><br><br>Has 35714 entries and was indexed 29-Jan-2002.<br><br>Keywords = high density oligonucleotide array<br></td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td nowrap>Web link</td>
+<td><a href="http://www.affymetrix.com/support/technical/byproduct.affx?product=hu35k">http://www.affymetrix.com/support/technical/byproduct.affx?product=hu35k</a><br><a href="http://www.affymetrix.com/analysis/index.affx">http://www.affymetrix.com/analysis/index.affx</a><br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Submission date</td>
+<td>Feb 19, 2002</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Last update date</td>
+<td>Jun 03, 2009</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Organization</td>
+<td>Affymetrix, Inc.</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>E-mail</td>
+<td><a href="mailto:geo@ncbi.nlm.nih.gov, support@affymetrix.com">geo@ncbi.nlm.nih.gov, support@affymetrix.com</a><br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Phone</td>
+<td style="text-align: justify">888-362-2447<br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>URL</td>
+<td><a href="http://www.affymetrix.com/index.affx">http://www.affymetrix.com/index.affx</a><br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Street address</td>
+<td style="text-align: justify"> <br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>City</td>
+<td style="text-align: justify">Santa Clara</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>State/province</td>
+<td style="text-align: justify">CA</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>ZIP/Postal code</td>
+<td style="text-align: justify">95051</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Country</td>
+<td style="text-align: justify">USA</td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td>Samples (318)<div id="L1854230971divshown" name="L1854230971divshown" style="display: none"><a href="javascript:HandleVisibilityChangeL1854230971()"><img alt="Less..." border="0" src="/geo/img/minus_close.gif">&nbsp;Less...</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div id="L1854230971divhidden" name="L1854230971divhidden" style="display: block"><a href="javascript:HandleVisibilityChangeL1854230971()"><img alt="More..." border="0" src="/geo/img/plus_small.gif">&nbsp;More...</a></div>
+</td>
+<td onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)"><a href="/geo/query/acc.cgi?acc=GSM2285">GSM2285</a>, <a href="/geo/query/acc.cgi?acc=GSM2290">GSM2290</a>, <a href="/geo/query/acc.cgi?acc=GSM2295">GSM2295</a>, <a href="/geo/query/acc.cgi?acc=GSM2300">GSM2300</a>, <a href="/geo/query/acc.cgi?acc=GSM2305">GSM2305</a>, <a href="/geo/query/acc.cgi?acc=GSM2310">GSM2310</a>&nbsp;<script language="Javascript" type="text/javascript">
+<!--
+function HandleVisibilityChangeL1854230971(){if(document.getElementById("L1854230971div").style.display == "block"){document.getElementById("L1854230971div").style.display = "none";document.getElementById("L1854230971divhidden").style.display = "block";document.getElementById("L1854230971divshown").style.display = "none";}else{document.getElementById("L1854230971div").style.display = "block";document.getElementById("L1854230971divhidden").style.display = "none";document.getElementById("L1854230971divshown").style.display = "block";}}
+-->
+</script>
+<div id="L1854230971div" name="L1854230971div" style="display: none"><a href="/geo/query/acc.cgi?acc=GSM2314">GSM2314</a>, <a href="/geo/query/acc.cgi?acc=GSM2319">GSM2319</a>, <a href="/geo/query/acc.cgi?acc=GSM2324">GSM2324</a>, <a href="/geo/query/acc.cgi?acc=GSM2329">GSM2329</a>, <a href="/geo/query/acc.cgi?acc=GSM1674908">GSM1674908</a>, <a href="/geo/query/acc.cgi?acc=GSM1674909">GSM1674909</a>, <a href="/geo/query/acc.cgi?acc=GSM1674910">GSM1674910</a>, <a href="/geo/query/acc.cgi?acc=GSM1674911">GSM1674911</a>, <a href="/geo/query/acc.cgi?acc=GSM1674912">GSM1674912</a>, <a href="/geo/query/acc.cgi?acc=GSM1674913">GSM1674913</a>, <a href="/geo/query/acc.cgi?acc=GSM1674914">GSM1674914</a>, <a href="/geo/query/acc.cgi?acc=GSM1674915">GSM1674915</a>, <a href="/geo/query/acc.cgi?acc=GSM1674916">GSM1674916</a>, <a href="/geo/query/acc.cgi?acc=GSM1674917">GSM1674917</a>, <a href="/geo/query/acc.cgi?acc=GSM1674918">GSM1674918</a>, <a href="/geo/query/acc.cgi?acc=GSM1674919">GSM1674919</a>, <a href="/geo/query/acc.cgi?acc=GSM1674920">GSM1674920</a>, <a href="/geo/query/acc.cgi?acc=GSM1674921">GSM1674921</a>, <a href="/geo/query/acc.cgi?acc=GSM1674922">GSM1674922</a>, <a href="/geo/query/acc.cgi?acc=GSM1674923">GSM1674923</a>, <a href="/geo/query/acc.cgi?acc=GSM1674924">GSM1674924</a>, <a href="/geo/query/acc.cgi?acc=GSM1674925">GSM1674925</a>, <a href="/geo/query/acc.cgi?acc=GSM1674926">GSM1674926</a>, <a href="/geo/query/acc.cgi?acc=GSM1674927">GSM1674927</a>, <a href="/geo/query/acc.cgi?acc=GSM1674928">GSM1674928</a>, <a href="/geo/query/acc.cgi?acc=GSM1674929">GSM1674929</a>, <a href="/geo/query/acc.cgi?acc=GSM1674930">GSM1674930</a>, <a href="/geo/query/acc.cgi?acc=GSM1674931">GSM1674931</a>, <a href="/geo/query/acc.cgi?acc=GSM1674932">GSM1674932</a>, <a href="/geo/query/acc.cgi?acc=GSM1674933">GSM1674933</a>, <a href="/geo/query/acc.cgi?acc=GSM1674934">GSM1674934</a>, <a href="/geo/query/acc.cgi?acc=GSM1674935">GSM1674935</a>, <a href="/geo/query/acc.cgi?acc=GSM1674936">GSM1674936</a>, <a href="/geo/query/acc.cgi?acc=GSM1674937">GSM1674937</a>, <a href="/geo/query/acc.cgi?acc=GSM1686773">GSM1686773</a>, <a href="/geo/query/acc.cgi?acc=GSM1686774">GSM1686774</a>, <a href="/geo/query/acc.cgi?acc=GSM1686775">GSM1686775</a>, <a href="/geo/query/acc.cgi?acc=GSM1686789">GSM1686789</a>, <a href="/geo/query/acc.cgi?acc=GSM1686790">GSM1686790</a>, <a href="/geo/query/acc.cgi?acc=GSM1686791">GSM1686791</a>, <a href="/geo/query/acc.cgi?acc=GSM1686792">GSM1686792</a>, <a href="/geo/query/acc.cgi?acc=GSM1686793">GSM1686793</a>, <a href="/geo/query/acc.cgi?acc=GSM1686794">GSM1686794</a>, <a href="/geo/query/acc.cgi?acc=GSM1686795">GSM1686795</a>, <a href="/geo/query/acc.cgi?acc=GSM1686796">GSM1686796</a>, <a href="/geo/query/acc.cgi?acc=GSM1686797">GSM1686797</a>, <a href="/geo/query/acc.cgi?acc=GSM1686798">GSM1686798</a>, <a href="/geo/query/acc.cgi?acc=GSM1686799">GSM1686799</a>, <a href="/geo/query/acc.cgi?acc=GSM1686825">GSM1686825</a>, <a href="/geo/query/acc.cgi?acc=GSM1686826">GSM1686826</a>, <a href="/geo/query/acc.cgi?acc=GSM1686827">GSM1686827</a>, <a href="/geo/query/acc.cgi?acc=GSM1686828">GSM1686828</a>, <a href="/geo/query/acc.cgi?acc=GSM1686829">GSM1686829</a>, <a href="/geo/query/acc.cgi?acc=GSM1686830">GSM1686830</a>, <a href="/geo/query/acc.cgi?acc=GSM1686831">GSM1686831</a>, <a href="/geo/query/acc.cgi?acc=GSM1686832">GSM1686832</a>, <a href="/geo/query/acc.cgi?acc=GSM1686833">GSM1686833</a>, <a href="/geo/query/acc.cgi?acc=GSM1686834">GSM1686834</a>, <a href="/geo/query/acc.cgi?acc=GSM1686835">GSM1686835</a>, <a href="/geo/query/acc.cgi?acc=GSM1686836">GSM1686836</a>, <a href="/geo/query/acc.cgi?acc=GSM1686837">GSM1686837</a>, <a href="/geo/query/acc.cgi?acc=GSM1686838">GSM1686838</a>, <a href="/geo/query/acc.cgi?acc=GSM1686839">GSM1686839</a>, <a href="/geo/query/acc.cgi?acc=GSM1686840">GSM1686840</a>, <a href="/geo/query/acc.cgi?acc=GSM1686841">GSM1686841</a>, <a href="/geo/query/acc.cgi?acc=GSM1686842">GSM1686842</a>, <a href="/geo/query/acc.cgi?acc=GSM1686843">GSM1686843</a>, <a href="/geo/query/acc.cgi?acc=GSM1686844">GSM1686844</a>, <a href="/geo/query/acc.cgi?acc=GSM1686845">GSM1686845</a>, <a href="/geo/query/acc.cgi?acc=GSM1686846">GSM1686846</a>, <a href="/geo/query/acc.cgi?acc=GSM1686847">GSM1686847</a>, <a href="/geo/query/acc.cgi?acc=GSM1686848">GSM1686848</a>, <a href="/geo/query/acc.cgi?acc=GSM1686895">GSM1686895</a>, <a href="/geo/query/acc.cgi?acc=GSM1686896">GSM1686896</a>, <a href="/geo/query/acc.cgi?acc=GSM1686897">GSM1686897</a>, <a href="/geo/query/acc.cgi?acc=GSM1686898">GSM1686898</a>, <a href="/geo/query/acc.cgi?acc=GSM1686899">GSM1686899</a>, <a href="/geo/query/acc.cgi?acc=GSM1686900">GSM1686900</a>, <a href="/geo/query/acc.cgi?acc=GSM1686901">GSM1686901</a>, <a href="/geo/query/acc.cgi?acc=GSM1686902">GSM1686902</a>, <a href="/geo/query/acc.cgi?acc=GSM1686903">GSM1686903</a>, <a href="/geo/query/acc.cgi?acc=GSM1686904">GSM1686904</a>, <a href="/geo/query/acc.cgi?acc=GSM1686905">GSM1686905</a>, <a href="/geo/query/acc.cgi?acc=GSM1686906">GSM1686906</a>, <a href="/geo/query/acc.cgi?acc=GSM1686907">GSM1686907</a>, <a href="/geo/query/acc.cgi?acc=GSM1686908">GSM1686908</a>, <a href="/geo/query/acc.cgi?acc=GSM1686909">GSM1686909</a>, <a href="/geo/query/acc.cgi?acc=GSM1686910">GSM1686910</a>, <a href="/geo/query/acc.cgi?acc=GSM1686911">GSM1686911</a>, <a href="/geo/query/acc.cgi?acc=GSM1686912">GSM1686912</a>, <a href="/geo/query/acc.cgi?acc=GSM1686913">GSM1686913</a>, <a href="/geo/query/acc.cgi?acc=GSM1686914">GSM1686914</a>, <a href="/geo/query/acc.cgi?acc=GSM1686915">GSM1686915</a>, <a href="/geo/query/acc.cgi?acc=GSM1686916">GSM1686916</a>, <a href="/geo/query/acc.cgi?acc=GSM1686917">GSM1686917</a>, <a href="/geo/query/acc.cgi?acc=GSM1686918">GSM1686918</a>, <a href="/geo/query/acc.cgi?acc=GSM1686919">GSM1686919</a>, <a href="/geo/query/acc.cgi?acc=GSM1686920">GSM1686920</a>, <a href="/geo/query/acc.cgi?acc=GSM1686921">GSM1686921</a>, <a href="/geo/query/acc.cgi?acc=GSM1686922">GSM1686922</a>, <a href="/geo/query/acc.cgi?acc=GSM1686923">GSM1686923</a>, <a href="/geo/query/acc.cgi?acc=GSM1686924">GSM1686924</a>, <a href="/geo/query/acc.cgi?acc=GSM1686925">GSM1686925</a>, <a href="/geo/query/acc.cgi?acc=GSM1686926">GSM1686926</a>, <a href="/geo/query/acc.cgi?acc=GSM1686927">GSM1686927</a>, <a href="/geo/query/acc.cgi?acc=GSM1686928">GSM1686928</a>, <a href="/geo/query/acc.cgi?acc=GSM1686929">GSM1686929</a>, <a href="/geo/query/acc.cgi?acc=GSM1686930">GSM1686930</a>, <a href="/geo/query/acc.cgi?acc=GSM1686931">GSM1686931</a>, <a href="/geo/query/acc.cgi?acc=GSM1686932">GSM1686932</a>, <a href="/geo/query/acc.cgi?acc=GSM1686933">GSM1686933</a>, <a href="/geo/query/acc.cgi?acc=GSM1686934">GSM1686934</a>, <a href="/geo/query/acc.cgi?acc=GSM1686935">GSM1686935</a>, <a href="/geo/query/acc.cgi?acc=GSM1686936">GSM1686936</a>, <a href="/geo/query/acc.cgi?acc=GSM1686952">GSM1686952</a>, <a href="/geo/query/acc.cgi?acc=GSM1686953">GSM1686953</a>, <a href="/geo/query/acc.cgi?acc=GSM1686954">GSM1686954</a>, <a href="/geo/query/acc.cgi?acc=GSM1686955">GSM1686955</a>, <a href="/geo/query/acc.cgi?acc=GSM1686956">GSM1686956</a>, <a href="/geo/query/acc.cgi?acc=GSM1686957">GSM1686957</a>, <a href="/geo/query/acc.cgi?acc=GSM1686958">GSM1686958</a>, <a href="/geo/query/acc.cgi?acc=GSM1686959">GSM1686959</a>, <a href="/geo/query/acc.cgi?acc=GSM1686960">GSM1686960</a>, <a href="/geo/query/acc.cgi?acc=GSM1686961">GSM1686961</a>, <a href="/geo/query/acc.cgi?acc=GSM1686962">GSM1686962</a>, <a href="/geo/query/acc.cgi?acc=GSM1686963">GSM1686963</a>, <a href="/geo/query/acc.cgi?acc=GSM1686964">GSM1686964</a>, <a href="/geo/query/acc.cgi?acc=GSM1686965">GSM1686965</a>, <a href="/geo/query/acc.cgi?acc=GSM1686966">GSM1686966</a>, <a href="/geo/query/acc.cgi?acc=GSM1686967">GSM1686967</a>, <a href="/geo/query/acc.cgi?acc=GSM1686968">GSM1686968</a>, <a href="/geo/query/acc.cgi?acc=GSM1686969">GSM1686969</a>, <a href="/geo/query/acc.cgi?acc=GSM1686970">GSM1686970</a>, <a href="/geo/query/acc.cgi?acc=GSM1686971">GSM1686971</a>, <a href="/geo/query/acc.cgi?acc=GSM1686972">GSM1686972</a>, <a href="/geo/query/acc.cgi?acc=GSM1686973">GSM1686973</a>, <a href="/geo/query/acc.cgi?acc=GSM1686974">GSM1686974</a>, <a href="/geo/query/acc.cgi?acc=GSM1686975">GSM1686975</a>, <a href="/geo/query/acc.cgi?acc=GSM1686976">GSM1686976</a>, <a href="/geo/query/acc.cgi?acc=GSM1686977">GSM1686977</a>, <a href="/geo/query/acc.cgi?acc=GSM1686978">GSM1686978</a>, <a href="/geo/query/acc.cgi?acc=GSM1686979">GSM1686979</a>, <a href="/geo/query/acc.cgi?acc=GSM1686980">GSM1686980</a>, <a href="/geo/query/acc.cgi?acc=GSM1686981">GSM1686981</a>, <a href="/geo/query/acc.cgi?acc=GSM1686982">GSM1686982</a>, <a href="/geo/query/acc.cgi?acc=GSM1686983">GSM1686983</a>, <a href="/geo/query/acc.cgi?acc=GSM1686984">GSM1686984</a>, <a href="/geo/query/acc.cgi?acc=GSM1686985">GSM1686985</a>, <a href="/geo/query/acc.cgi?acc=GSM1686986">GSM1686986</a>, <a href="/geo/query/acc.cgi?acc=GSM1686989">GSM1686989</a>, <a href="/geo/query/acc.cgi?acc=GSM1686990">GSM1686990</a>, <a href="/geo/query/acc.cgi?acc=GSM1686991">GSM1686991</a>, <a href="/geo/query/acc.cgi?acc=GSM1686992">GSM1686992</a>, <a href="/geo/query/acc.cgi?acc=GSM1686993">GSM1686993</a>, <a href="/geo/query/acc.cgi?acc=GSM1686994">GSM1686994</a>, <a href="/geo/query/acc.cgi?acc=GSM1686995">GSM1686995</a>, <a href="/geo/query/acc.cgi?acc=GSM1686996">GSM1686996</a>, <a href="/geo/query/acc.cgi?acc=GSM1686997">GSM1686997</a>, <a href="/geo/query/acc.cgi?acc=GSM1686998">GSM1686998</a>, <a href="/geo/query/acc.cgi?acc=GSM1686999">GSM1686999</a>, <a href="/geo/query/acc.cgi?acc=GSM1687000">GSM1687000</a>, <a href="/geo/query/acc.cgi?acc=GSM1687001">GSM1687001</a>, <a href="/geo/query/acc.cgi?acc=GSM1687002">GSM1687002</a>, <a href="/geo/query/acc.cgi?acc=GSM1687072">GSM1687072</a>, <a href="/geo/query/acc.cgi?acc=GSM1687073">GSM1687073</a>, <a href="/geo/query/acc.cgi?acc=GSM1687074">GSM1687074</a>, <a href="/geo/query/acc.cgi?acc=GSM1687075">GSM1687075</a>, <a href="/geo/query/acc.cgi?acc=GSM1687076">GSM1687076</a>, <a href="/geo/query/acc.cgi?acc=GSM1687077">GSM1687077</a>, <a href="/geo/query/acc.cgi?acc=GSM1687078">GSM1687078</a>, <a href="/geo/query/acc.cgi?acc=GSM1687079">GSM1687079</a>, <a href="/geo/query/acc.cgi?acc=GSM1687080">GSM1687080</a>, <a href="/geo/query/acc.cgi?acc=GSM1687081">GSM1687081</a>, <a href="/geo/query/acc.cgi?acc=GSM1687082">GSM1687082</a>, <a href="/geo/query/acc.cgi?acc=GSM1687083">GSM1687083</a>, <a href="/geo/query/acc.cgi?acc=GSM1687084">GSM1687084</a>, <a href="/geo/query/acc.cgi?acc=GSM1687085">GSM1687085</a>, <a href="/geo/query/acc.cgi?acc=GSM1687086">GSM1687086</a>, <a href="/geo/query/acc.cgi?acc=GSM1687087">GSM1687087</a>, <a href="/geo/query/acc.cgi?acc=GSM1687088">GSM1687088</a>, <a href="/geo/query/acc.cgi?acc=GSM1687089">GSM1687089</a>, <a href="/geo/query/acc.cgi?acc=GSM1687090">GSM1687090</a>, <a href="/geo/query/acc.cgi?acc=GSM1687091">GSM1687091</a>, <a href="/geo/query/acc.cgi?acc=GSM1687092">GSM1687092</a>, <a href="/geo/query/acc.cgi?acc=GSM1687093">GSM1687093</a>, <a href="/geo/query/acc.cgi?acc=GSM1687094">GSM1687094</a>, <a href="/geo/query/acc.cgi?acc=GSM1687095">GSM1687095</a>, <a href="/geo/query/acc.cgi?acc=GSM1687096">GSM1687096</a>, <a href="/geo/query/acc.cgi?acc=GSM1687097">GSM1687097</a>, <a href="/geo/query/acc.cgi?acc=GSM1687098">GSM1687098</a>, <a href="/geo/query/acc.cgi?acc=GSM1687099">GSM1687099</a>, <a href="/geo/query/acc.cgi?acc=GSM1687100">GSM1687100</a>, <a href="/geo/query/acc.cgi?acc=GSM1687101">GSM1687101</a>, <a href="/geo/query/acc.cgi?acc=GSM1687102">GSM1687102</a>, <a href="/geo/query/acc.cgi?acc=GSM1687103">GSM1687103</a>, <a href="/geo/query/acc.cgi?acc=GSM1687104">GSM1687104</a>, <a href="/geo/query/acc.cgi?acc=GSM1687105">GSM1687105</a>, <a href="/geo/query/acc.cgi?acc=GSM1687106">GSM1687106</a>, <a href="/geo/query/acc.cgi?acc=GSM1687107">GSM1687107</a>, <a href="/geo/query/acc.cgi?acc=GSM1687108">GSM1687108</a>, <a href="/geo/query/acc.cgi?acc=GSM1687109">GSM1687109</a>, <a href="/geo/query/acc.cgi?acc=GSM1687110">GSM1687110</a>, <a href="/geo/query/acc.cgi?acc=GSM1687111">GSM1687111</a>, <a href="/geo/query/acc.cgi?acc=GSM1687112">GSM1687112</a>, <a href="/geo/query/acc.cgi?acc=GSM1687113">GSM1687113</a>, <a href="/geo/query/acc.cgi?acc=GSM1687114">GSM1687114</a>, <a href="/geo/query/acc.cgi?acc=GSM1687115">GSM1687115</a>, <a href="/geo/query/acc.cgi?acc=GSM1687116">GSM1687116</a>, <a href="/geo/query/acc.cgi?acc=GSM1687117">GSM1687117</a>, <a href="/geo/query/acc.cgi?acc=GSM1687118">GSM1687118</a>, <a href="/geo/query/acc.cgi?acc=GSM1687119">GSM1687119</a>, <a href="/geo/query/acc.cgi?acc=GSM1687120">GSM1687120</a>, <a href="/geo/query/acc.cgi?acc=GSM1687121">GSM1687121</a>, <a href="/geo/query/acc.cgi?acc=GSM1687122">GSM1687122</a>, <a href="/geo/query/acc.cgi?acc=GSM1687123">GSM1687123</a>, <a href="/geo/query/acc.cgi?acc=GSM1687124">GSM1687124</a>, <a href="/geo/query/acc.cgi?acc=GSM1687125">GSM1687125</a>, <a href="/geo/query/acc.cgi?acc=GSM1687126">GSM1687126</a>, <a href="/geo/query/acc.cgi?acc=GSM1687127">GSM1687127</a>, <a href="/geo/query/acc.cgi?acc=GSM1687128">GSM1687128</a>, <a href="/geo/query/acc.cgi?acc=GSM1687129">GSM1687129</a>, <a href="/geo/query/acc.cgi?acc=GSM1687130">GSM1687130</a>, <a href="/geo/query/acc.cgi?acc=GSM1687131">GSM1687131</a>, <a href="/geo/query/acc.cgi?acc=GSM1687132">GSM1687132</a>, <a href="/geo/query/acc.cgi?acc=GSM1687133">GSM1687133</a>, <a href="/geo/query/acc.cgi?acc=GSM1687134">GSM1687134</a>, <a href="/geo/query/acc.cgi?acc=GSM1687135">GSM1687135</a>, <a href="/geo/query/acc.cgi?acc=GSM1687136">GSM1687136</a>, <a href="/geo/query/acc.cgi?acc=GSM1687137">GSM1687137</a>, <a href="/geo/query/acc.cgi?acc=GSM1687138">GSM1687138</a>, <a href="/geo/query/acc.cgi?acc=GSM1687139">GSM1687139</a>, <a href="/geo/query/acc.cgi?acc=GSM1687140">GSM1687140</a>, <a href="/geo/query/acc.cgi?acc=GSM1687141">GSM1687141</a>, <a href="/geo/query/acc.cgi?acc=GSM1687142">GSM1687142</a>, <a href="/geo/query/acc.cgi?acc=GSM1687143">GSM1687143</a>, <a href="/geo/query/acc.cgi?acc=GSM1687144">GSM1687144</a>, <a href="/geo/query/acc.cgi?acc=GSM1687145">GSM1687145</a>, <a href="/geo/query/acc.cgi?acc=GSM1687146">GSM1687146</a>, <a href="/geo/query/acc.cgi?acc=GSM1687147">GSM1687147</a>, <a href="/geo/query/acc.cgi?acc=GSM1687148">GSM1687148</a>, <a href="/geo/query/acc.cgi?acc=GSM1687149">GSM1687149</a>, <a href="/geo/query/acc.cgi?acc=GSM1687150">GSM1687150</a>, <a href="/geo/query/acc.cgi?acc=GSM1687151">GSM1687151</a>, <a href="/geo/query/acc.cgi?acc=GSM1687152">GSM1687152</a>, <a href="/geo/query/acc.cgi?acc=GSM1687153">GSM1687153</a>, <a href="/geo/query/acc.cgi?acc=GSM1687154">GSM1687154</a>, <a href="/geo/query/acc.cgi?acc=GSM1687155">GSM1687155</a>, <a href="/geo/query/acc.cgi?acc=GSM1687156">GSM1687156</a>, <a href="/geo/query/acc.cgi?acc=GSM1687157">GSM1687157</a>, <a href="/geo/query/acc.cgi?acc=GSM1687158">GSM1687158</a>, <a href="/geo/query/acc.cgi?acc=GSM1687159">GSM1687159</a>, <a href="/geo/query/acc.cgi?acc=GSM1687160">GSM1687160</a>, <a href="/geo/query/acc.cgi?acc=GSM1687161">GSM1687161</a>, <a href="/geo/query/acc.cgi?acc=GSM1687162">GSM1687162</a>, <a href="/geo/query/acc.cgi?acc=GSM1687163">GSM1687163</a>, <a href="/geo/query/acc.cgi?acc=GSM1687164">GSM1687164</a>, <a href="/geo/query/acc.cgi?acc=GSM1687165">GSM1687165</a>, <a href="/geo/query/acc.cgi?acc=GSM1687166">GSM1687166</a>, <a href="/geo/query/acc.cgi?acc=GSM1687167">GSM1687167</a>, <a href="/geo/query/acc.cgi?acc=GSM1687168">GSM1687168</a>, <a href="/geo/query/acc.cgi?acc=GSM1687169">GSM1687169</a>, <a href="/geo/query/acc.cgi?acc=GSM1687170">GSM1687170</a>, <a href="/geo/query/acc.cgi?acc=GSM1687171">GSM1687171</a>, <a href="/geo/query/acc.cgi?acc=GSM1687172">GSM1687172</a>, <a href="/geo/query/acc.cgi?acc=GSM1687173">GSM1687173</a>, <a href="/geo/query/acc.cgi?acc=GSM1687174">GSM1687174</a>, <a href="/geo/query/acc.cgi?acc=GSM1687175">GSM1687175</a>, <a href="/geo/query/acc.cgi?acc=GSM1687176">GSM1687176</a>, <a href="/geo/query/acc.cgi?acc=GSM1687177">GSM1687177</a>, <a href="/geo/query/acc.cgi?acc=GSM1687178">GSM1687178</a>, <a href="/geo/query/acc.cgi?acc=GSM1687179">GSM1687179</a>, <a href="/geo/query/acc.cgi?acc=GSM1687180">GSM1687180</a>, <a href="/geo/query/acc.cgi?acc=GSM1687181">GSM1687181</a>, <a href="/geo/query/acc.cgi?acc=GSM1687182">GSM1687182</a>, <a href="/geo/query/acc.cgi?acc=GSM1687183">GSM1687183</a>, <a href="/geo/query/acc.cgi?acc=GSM1687184">GSM1687184</a>, <a href="/geo/query/acc.cgi?acc=GSM1687185">GSM1687185</a>, <a href="/geo/query/acc.cgi?acc=GSM1687186">GSM1687186</a>, <a href="/geo/query/acc.cgi?acc=GSM1687187">GSM1687187</a>, <a href="/geo/query/acc.cgi?acc=GSM1687188">GSM1687188</a>, <a href="/geo/query/acc.cgi?acc=GSM1687189">GSM1687189</a>, <a href="/geo/query/acc.cgi?acc=GSM1687190">GSM1687190</a>, <a href="/geo/query/acc.cgi?acc=GSM1687191">GSM1687191</a>, <a href="/geo/query/acc.cgi?acc=GSM1687192">GSM1687192</a>, <a href="/geo/query/acc.cgi?acc=GSM1687193">GSM1687193</a>, <a href="/geo/query/acc.cgi?acc=GSM1687194">GSM1687194</a>, <a href="/geo/query/acc.cgi?acc=GSM1687195">GSM1687195</a>, <a href="/geo/query/acc.cgi?acc=GSM1687196">GSM1687196</a>, <a href="/geo/query/acc.cgi?acc=GSM1687197">GSM1687197</a>, <a href="/geo/query/acc.cgi?acc=GSM1687198">GSM1687198</a>, <a href="/geo/query/acc.cgi?acc=GSM1687199">GSM1687199</a>, <a href="/geo/query/acc.cgi?acc=GSM1687200">GSM1687200</a>, <a href="/geo/query/acc.cgi?acc=GSM1687201">GSM1687201</a>, <a href="/geo/query/acc.cgi?acc=GSM1687202">GSM1687202</a>, <a href="/geo/query/acc.cgi?acc=GSM1687203">GSM1687203</a>, <a href="/geo/query/acc.cgi?acc=GSM1687204">GSM1687204</a>, <a href="/geo/query/acc.cgi?acc=GSM1687205">GSM1687205</a>, <a href="/geo/query/acc.cgi?acc=GSM1687206">GSM1687206</a>, <a href="/geo/query/acc.cgi?acc=GSM1687207">GSM1687207</a>, <a href="/geo/query/acc.cgi?acc=GSM1687208">GSM1687208</a>, <a href="/geo/query/acc.cgi?acc=GSM1687209">GSM1687209</a>, <a href="/geo/query/acc.cgi?acc=GSM1687210">GSM1687210</a>, <a href="/geo/query/acc.cgi?acc=GSM1687211">GSM1687211</a>, <a href="/geo/query/acc.cgi?acc=GSM1687212">GSM1687212</a>, <a href="/geo/query/acc.cgi?acc=GSM1687213">GSM1687213</a>, <a href="/geo/query/acc.cgi?acc=GSM1687214">GSM1687214</a>, <a href="/geo/query/acc.cgi?acc=GSM1687215">GSM1687215</a>, <a href="/geo/query/acc.cgi?acc=GSM1687216">GSM1687216</a>, <a href="/geo/query/acc.cgi?acc=GSM1687217">GSM1687217</a>, <a href="/geo/query/acc.cgi?acc=GSM1687218">GSM1687218</a>, <a href="/geo/query/acc.cgi?acc=GSM1687219">GSM1687219</a>, <a href="/geo/query/acc.cgi?acc=GSM1687220">GSM1687220</a></div>
+</td>
+</tr>
+<tr valign="top"><td>Series (13)<div id="L1884066147divshown" name="L1884066147divshown" style="display: none"><a href="javascript:HandleVisibilityChangeL1884066147()"><img alt="Less..." border="0" src="/geo/img/minus_close.gif">&nbsp;Less...</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div id="L1884066147divhidden" name="L1884066147divhidden" style="display: block"><a href="javascript:HandleVisibilityChangeL1884066147()"><img alt="More..." border="0" src="/geo/img/plus_small.gif">&nbsp;More...</a></div>
+</td>
+<td onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)"><table cellpadding="3" style="position:relative;top:-5px;left:-5px"><tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE64" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE64</a></td>
+<td valign="top">Insulin sensitive muscle sample pool 1</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE65" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE65</a></td>
+<td valign="top">Insulin sensitive muscle sample pool 2</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE66" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE66</a></td>
+<td valign="top">Insulin sensitive muscle sample pool 3</td>
+</tr>
+</table>
+<script language="Javascript" type="text/javascript">
+<!--
+function HandleVisibilityChangeL1884066147(){if(document.getElementById("L1884066147div").style.display == "block"){document.getElementById("L1884066147div").style.display = "none";document.getElementById("L1884066147divhidden").style.display = "block";document.getElementById("L1884066147divshown").style.display = "none";}else{document.getElementById("L1884066147div").style.display = "block";document.getElementById("L1884066147divhidden").style.display = "none";document.getElementById("L1884066147divshown").style.display = "block";}}
+-->
+</script>
+<div id="L1884066147div" name="L1884066147div" style="display: none"><table cellpadding="3" style="position:relative;top:-5px;left:-5px"><tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE67" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE67</a></td>
+<td valign="top">Insulin sensitive muscle sample pool 4</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE68" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE68</a></td>
+<td valign="top">Insulin sensitive muscle sample pool 5</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE69" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE69</a></td>
+<td valign="top">Insulin resistant muscle sample pool 1</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE70" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE70</a></td>
+<td valign="top">Insulin resistant muscle sample pool 2</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE71" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE71</a></td>
+<td valign="top">Insulin resistant muscle sample pool 3</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE72" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE72</a></td>
+<td valign="top">Insulin resistant muscle sample pool 4</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE73" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE73</a></td>
+<td valign="top">Insulin resistant muscle sample pool 5</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE121" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE121</a></td>
+<td valign="top">Type 2 diabetes and insulin resistance</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE68545" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE68545</a></td>
+<td valign="top">caArray_becic-00229: Gene expression analysis of prostate cancers</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSE68928" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSE68928</a></td>
+<td valign="top">caArray_golub-00236: Multiclass cancer diagnosis using tumor gene expression signatures</td>
+</tr>
+</table></div>
+</td>
+</tr>
+</table>
+<br><table cellspacing="3" width="600"><tr bgcolor="#eeeeee" valign="top"><td colspan="2"><strong>Data table header descriptions</strong></td></tr>
+<tr valign="top"><td><strong>ID</strong></td>
+<td>Affymetrix Probe Set ID</td>
+</tr>
+<tr valign="top"><td><strong>GB_ACC</strong></td>
+<td>GenBank Accession Number</td>
+</tr>
+<tr valign="top"><td><strong>SPOT_ID</strong></td>
+<td></td>
+</tr>
+<tr valign="top"><td><strong>Species Scientific Name</strong></td>
+<td>The genus and species of the organism represented by the probe set.</td>
+</tr>
+<tr valign="top"><td><strong>Annotation Date</strong></td>
+<td>The date that the annotations for this probe array were last updated. It will generally be earlier than the date when the annotations were posted on the Affymetrix web site.</td>
+</tr>
+<tr valign="top"><td><strong>Sequence Type</strong></td>
+<td>Indicates whether the sequence is an Exemplar, Consensus or Control sequence. An Exemplar is a single nucleotide sequence taken directly from a public database. This sequence could be an mRNA or EST. A Consensus sequence, is a nucleotide sequence assembled by Affymetrix, based on one or more sequence taken from a public database.</td>
+</tr>
+<tr valign="top"><td><strong>Sequence Source</strong></td>
+<td>The database from which the sequence used to design this probe set was taken.</td>
+</tr>
+<tr valign="top"><td><strong>Target Description</strong></td>
+<td>GenBank description associated with the representative public identifier. Blank for some probe sets.</td>
+</tr>
+<tr valign="top"><td><strong>Representative Public ID</strong></td>
+<td>The accession number of a representative sequence. Note that for consensus-based probe sets, the representative sequence is only one of several sequences (sequence sub-clusters) used to build the consensus sequence and it is not directly used to derive the probe sequences. The representative sequence is chosen during array design as a sequence that is best associated with the transcribed region being interrogated by the probe set. Refer to the &quot;Sequence Source&quot; field to determine the database used.</td>
+</tr>
+<tr valign="top"><td><strong>Gene Title</strong></td>
+<td>Title of Gene represented by the probe set.</td>
+</tr>
+<tr valign="top"><td><strong>Gene Symbol</strong></td>
+<td>A gene symbol, when one is available (from UniGene).</td>
+</tr>
+<tr valign="top"><td><strong>ENTREZ_GENE_ID</strong></td>
+<td>Entrez Gene Database UID</td>
+</tr>
+<tr valign="top"><td><strong>RefSeq Transcript ID</strong></td>
+<td>References to multiple sequences in RefSeq. The field contains the ID and Description for each entry, and there can be multiple entries per ProbeSet.</td>
+</tr>
+<tr valign="top"><td><strong>Gene Ontology Biological Process</strong></td>
+<td>Gene Ontology Consortium Biological Process derived from LocusLink.  Each annotation consists of three parts: &quot;Accession Number // Description // Evidence&quot;. The description corresponds directly to the GO ID. The evidence can be &quot;direct&quot;, or &quot;extended&quot;.</td>
+</tr>
+<tr valign="top"><td><strong>Gene Ontology Cellular Component</strong></td>
+<td>Gene Ontology Consortium Cellular Component derived from LocusLink.  Each annotation consists of three parts: &quot;Accession Number // Description // Evidence&quot;. The description corresponds directly to the GO ID. The evidence can be &quot;direct&quot;, or &quot;extended&quot;.</td>
+</tr>
+<tr valign="top"><td><strong>Gene Ontology Molecular Function</strong></td>
+<td>Gene Ontology Consortium Molecular Function derived from LocusLink.  Each annotation consists of three parts: &quot;Accession Number // Description // Evidence&quot;. The description corresponds directly to the GO ID. The evidence can be &quot;direct&quot;, or &quot;extended&quot;.</td>
+</tr>
+</table>
+<br><div style="overflow:auto;width:950px;height:450px"><table cellpadding="2" cellspacing="2" width="950"><tr bgcolor="#eeeeee" valign="top"><td colspan="16"><strong>Data table</strong></td></tr>
+<tr valign="top"><td bgcolor="#EEEEEE"><strong>ID</strong></td>
+<td bgcolor="#DEEBDC"><strong>GB_ACC</strong></td>
+<td bgcolor="#EEEEEE"><strong>SPOT_ID</strong></td>
+<td bgcolor="#DEEBDC"><strong>Species Scientific Name</strong></td>
+<td bgcolor="#EEEEEE"><strong>Annotation Date</strong></td>
+<td bgcolor="#DEEBDC"><strong>Sequence Type</strong></td>
+<td bgcolor="#EEEEEE"><strong>Sequence Source</strong></td>
+<td bgcolor="#DEEBDC"><strong>Target Description</strong></td>
+<td bgcolor="#EEEEEE"><strong>Representative Public ID</strong></td>
+<td bgcolor="#DEEBDC"><strong>Gene Title</strong></td>
+<td bgcolor="#EEEEEE"><strong>Gene Symbol</strong></td>
+<td bgcolor="#DEEBDC"><strong>ENTREZ_GENE_ID</strong></td>
+<td bgcolor="#EEEEEE"><strong>RefSeq Transcript ID</strong></td>
+<td bgcolor="#DEEBDC"><strong>Gene Ontology Biological Process</strong></td>
+<td bgcolor="#EEEEEE"><strong>Gene Ontology Cellular Component</strong></td>
+<td bgcolor="#DEEBDC"><strong>Gene Ontology Molecular Function</strong></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA000993_at">AA000993_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA000993">AA000993</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze46h10.r1 Soares retina N2b4HR Homo sapiens cDNA clone 362083 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA000993</td>
+<td bgcolor="#DEEBDC" nowrap>PR domain containing 8</td>
+<td bgcolor="#EEEEEE" nowrap>PRDM8</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/56978">56978</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_001099403 /// NM_020226</td>
+<td bgcolor="#DEEBDC" nowrap>0006350 // transcription // inferred from electronic annotation /// 0006355 // regulation of transcription, DNA-dependent // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005622 // intracellular // inferred from electronic annotation /// 0005634 // nucleus // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0003677 // DNA binding // inferred from electronic annotation /// 0008270 // zinc ion binding // inferred from electronic annotation /// 0046872 // metal ion binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA001296_s_at">AA001296_s_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA001296">AA001296</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh82b09.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 427769 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA001296</td>
+<td bgcolor="#DEEBDC" nowrap>PHD finger protein 23</td>
+<td bgcolor="#EEEEEE" nowrap>PHF23</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/79142">79142</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_024297</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>0005515 // protein binding // inferred from electronic annotation /// 0008270 // zinc ion binding // inferred from electronic annotation /// 0046872 // metal ion binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA002245_at">AA002245_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA002245">AA002245</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh85f01.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 428089 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA002245</td>
+<td bgcolor="#DEEBDC" nowrap>zinc finger CCCH-type containing 11A</td>
+<td bgcolor="#EEEEEE" nowrap>ZC3H11A</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/9877">9877</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_014827</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>0003676 // nucleic acid binding // inferred from electronic annotation /// 0008270 // zinc ion binding // inferred from electronic annotation /// 0046872 // metal ion binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA004231_at">AA004231_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA004231">AA004231</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh92a03.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 428716 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA004231</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA004333_at">AA004333_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA004333">AA004333</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh91a01.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 428616 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA004333</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA004987_at">AA004987_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA004987">AA004987</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh94b01.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 428905 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA004987</td>
+<td bgcolor="#DEEBDC" nowrap>BMP2 inducible kinase, mRNA (cDNA clone MGC:33000 IMAGE:5272264)</td>
+<td bgcolor="#EEEEEE" nowrap>BMP2K</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/55589">55589</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_017593 /// NM_198892</td>
+<td bgcolor="#DEEBDC" nowrap>0006468 // protein amino acid phosphorylation // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005634 // nucleus // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0000166 // nucleotide binding // inferred from electronic annotation /// 0004672 // protein kinase activity // inferred from electronic annotation /// 0004674 // protein serine/threonine kinase activity // inferred from electronic annotation /// 0005524 // ATP binding // inferred from electronic annotation /// 0016301 // kinase activity // inferred from electronic annotation /// 0016740 // transferase activity // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA005190_at">AA005190_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA005190">AA005190</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh95d06.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 429035 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA005190</td>
+<td bgcolor="#DEEBDC" nowrap>Ribonuclease 6 precursor</td>
+<td bgcolor="#EEEEEE" nowrap>RNASET2</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/8635">8635</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_003730</td>
+<td bgcolor="#DEEBDC" nowrap>0006401 // RNA catabolic process // traceable author statement</td>
+<td bgcolor="#EEEEEE" nowrap>0005576 // extracellular region // traceable author statement /// 0005576 // extracellular region // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0003723 // RNA binding // inferred from electronic annotation /// 0004518 // nuclease activity // inferred from electronic annotation /// 0004519 // endonuclease activity // inferred from electronic annotation /// 0004540 // ribonuclease activity // traceable author statement /// 0016787 // hydrolase activity // inferred from electronic annotation /// 0033897 // ribonuclease T2 activity // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA007264_at">AA007264_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA007264">AA007264</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh97e06.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 429250 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA007264</td>
+<td bgcolor="#DEEBDC" nowrap>ubiquitin specific peptidase 39</td>
+<td bgcolor="#EEEEEE" nowrap>USP39</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/10713">10713</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_006590</td>
+<td bgcolor="#DEEBDC" nowrap>0000245 // spliceosome assembly // traceable author statement /// 0006397 // mRNA processing // traceable author statement /// 0006397 // mRNA processing // inferred from electronic annotation /// 0006511 // ubiquitin-dependent protein catabolic process // inferred from electronic annotation /// 0008380 // RNA splicing // traceable author statement /// 0008380 // RNA splicing // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005622 // intracellular // inferred from electronic annotation /// 0005634 // nucleus // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0004221 // ubiquitin thiolesterase activity // inferred from electronic annotation /// 0005515 // protein binding // inferred from physical interaction /// 0008270 // zinc ion binding // inferred from electronic annotation /// 0046872 // metal ion binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA007282_at">AA007282_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA007282">AA007282</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh97b10.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 429211 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA007282</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA007583_at">AA007583_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA007583">AA007583</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zh99d03.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 429413 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA007583</td>
+<td bgcolor="#DEEBDC" nowrap>CDNA FLJ54919 complete cds, highly similar to G2 and S phase expressed protein 1</td>
+<td bgcolor="#EEEEEE" nowrap>GTSE1</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/51512">51512</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_016426</td>
+<td bgcolor="#DEEBDC" nowrap>0000085 // G2 phase of mitotic cell cycle // non-traceable author statement /// 0006977 // DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest // non-traceable author statement /// 0007017 // microtubule-based process // non-traceable author statement</td>
+<td bgcolor="#EEEEEE" nowrap>0005737 // cytoplasm // inferred from electronic annotation /// 0005874 // microtubule // inferred from electronic annotation /// 0005881 // cytoplasmic microtubule // non-traceable author statement</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA009602_at">AA009602_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA009602">AA009602</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze82e10.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 365514 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA009602</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA009826_at">AA009826_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA009826">AA009826</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze82b02.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 365451 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA009826</td>
+<td bgcolor="#DEEBDC" nowrap>Chromosome 9 open reading frame 21, mRNA (cDNA clone MGC:168115 IMAGE:9020492)</td>
+<td bgcolor="#EEEEEE" nowrap>C9orf21</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/195827">195827</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_153698</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA009913_at">AA009913_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA009913">AA009913</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze83f05.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 365601 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA009913</td>
+<td bgcolor="#DEEBDC" nowrap>DPH2 homolog (S. cerevisiae)</td>
+<td bgcolor="#EEEEEE" nowrap>DPH2</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/1802">1802</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_001039589 /// NM_001384</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>0005515 // protein binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA010324_at">AA010324_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA010324">AA010324</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zi09c03.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 430276 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA010324</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA010686_at">AA010686_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA010686">AA010686</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze19a12.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 359422 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA010686</td>
+<td bgcolor="#DEEBDC" nowrap>CCR4-NOT transcription complex, subunit 2</td>
+<td bgcolor="#EEEEEE" nowrap>CNOT2</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/4848">4848</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_014515</td>
+<td bgcolor="#DEEBDC" nowrap>0006350 // transcription // inferred from electronic annotation /// 0006355 // regulation of transcription, DNA-dependent // inferred from electronic annotation /// 0006358 // regulation of transcription from RNA polymerase II promoter, global // non-traceable author statement /// 0045449 // regulation of transcription // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005634 // nucleus // non-traceable author statement /// 0005634 // nucleus // inferred from electronic annotation /// 0005737 // cytoplasm // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0005515 // protein binding // inferred from physical interaction /// 0016455 // RNA polymerase II transcription mediator activity // traceable author statement /// 0030528 // transcription regulator activity // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA010750_at">AA010750_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA010750">AA010750</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze22c01.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 359712 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA010750</td>
+<td bgcolor="#DEEBDC" nowrap>LAG1 homolog, ceramide synthase 2</td>
+<td bgcolor="#EEEEEE" nowrap>LASS2</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/29956">29956</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_022075 /// NM_181746</td>
+<td bgcolor="#DEEBDC" nowrap>0006355 // regulation of transcription, DNA-dependent // inferred from electronic annotation /// 0008610 // lipid biosynthetic process // inferred from electronic annotation /// 0030148 // sphingolipid biosynthetic process // inferred from electronic annotation /// 0046513 // ceramide biosynthetic process // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005634 // nucleus // inferred from electronic annotation /// 0005783 // endoplasmic reticulum // inferred from electronic annotation /// 0005789 // endoplasmic reticulum membrane // inferred from electronic annotation /// 0016020 // membrane // inferred from electronic annotation /// 0016021 // integral to membrane // inferred from electronic annotation /// 0031965 // nuclear membrane // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0003677 // DNA binding // inferred from electronic annotation /// 0003700 // transcription factor activity // inferred from electronic annotation /// 0005515 // protein binding // inferred from physical interaction /// 0043565 // sequence-specific DNA binding // inferred from electronic annotation /// 0050291 // sphingosine N-acyltransferase activity // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA010762_at">AA010762_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA010762">AA010762</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze22d07.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 359725 5' similar to gb:L06419 PROCOLLAGEN-LYSINE,2-OXOGLUTARATE 5-DIOXYGENASE PRECURSOR (HUMAN);.</td>
+<td bgcolor="#EEEEEE" nowrap>AA010762</td>
+<td bgcolor="#DEEBDC" nowrap>procollagen-lysine, 2-oxoglutarate 5-dioxygenase 3</td>
+<td bgcolor="#EEEEEE" nowrap>PLOD3</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/8985">8985</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_001084</td>
+<td bgcolor="#DEEBDC" nowrap>0006464 // protein modification process // traceable author statement /// 0019538 // protein metabolic process // inferred from electronic annotation /// 0055114 // oxidation reduction // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0005783 // endoplasmic reticulum // traceable author statement /// 0005783 // endoplasmic reticulum // inferred from electronic annotation /// 0016020 // membrane // inferred from electronic annotation /// 0030867 // rough endoplasmic reticulum membrane // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0005506 // iron ion binding // inferred from electronic annotation /// 0005515 // protein binding // inferred from physical interaction /// 0008475 // procollagen-lysine 5-dioxygenase activity // traceable author statement /// 0008475 // procollagen-lysine 5-dioxygenase activity // inferred from electronic annotation /// 0016491 // oxidoreductase activity // inferred from electronic annotation /// 0016702 // oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen // inferred from electronic annotation /// 0016706 // oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, 2-oxoglutarate as one donor, and incorporation of one atom each of oxygen into both donors // inferred from electronic annotation /// 0031418 // L-ascorbic acid binding // inferred from electronic annotation /// 0046872 // metal ion binding // inferred from electronic annotation</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA010933_s_at">AA010933_s_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA010933">AA010933</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze23a09.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 359800 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA010933</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA011243_s_at">AA011243_s_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA011243">AA011243</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>ze19d03.r1 Soares fetal heart NbHH19W Homo sapiens cDNA clone 359429 5'.</td>
+<td bgcolor="#EEEEEE" nowrap>AA011243</td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap></td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE" nowrap><a href="https://www.affymetrix.com/LinkServlet?array=U35K&amp;probeset=AA011452_at">AA011452_at</a></td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/nuccore/?term=AA011452">AA011452</a></td>
+<td bgcolor="#EEEEEE" nowrap></td>
+<td bgcolor="#DEEBDC" nowrap>Homo sapiens</td>
+<td bgcolor="#EEEEEE" nowrap>Mar 11, 2009</td>
+<td bgcolor="#DEEBDC" nowrap>Exemplar sequence</td>
+<td bgcolor="#EEEEEE" nowrap>GenBank</td>
+<td bgcolor="#DEEBDC" nowrap>zi01e06.r1 Soares fetal liver spleen 1NFLS S1 Homo sapiens cDNA clone 429538 5' similar to contains Alu repetitive element;.</td>
+<td bgcolor="#EEEEEE" nowrap>AA011452</td>
+<td bgcolor="#DEEBDC" nowrap>exosome component 6</td>
+<td bgcolor="#EEEEEE" nowrap>EXOSC6</td>
+<td bgcolor="#DEEBDC" nowrap><a href="http://www.ncbi.nlm.nih.gov/gene/118460">118460</a></td>
+<td bgcolor="#EEEEEE" nowrap>NM_058219</td>
+<td bgcolor="#DEEBDC" nowrap>0006364 // rRNA processing // inferred from electronic annotation /// 0006396 // RNA processing // inferred from electronic annotation</td>
+<td bgcolor="#EEEEEE" nowrap>0000178 // exosome (RNase complex) // inferred from electronic annotation /// 0005634 // nucleus // inferred from electronic annotation /// 0005737 // cytoplasm // inferred from electronic annotation</td>
+<td bgcolor="#DEEBDC" nowrap>0000175 // 3'-5'-exoribonuclease activity // inferred from electronic annotation /// 0003723 // RNA binding // inferred from electronic annotation /// 0004518 // nuclease activity // inferred from electronic annotation /// 0004527 // exonuclease activity // inferred from electronic annotation /// 0016787 // hydrolase activity // inferred from electronic annotation</td>
+</tr>
+</table></div>
+<br>Total number of rows: <strong>8934</strong><br><br>Table truncated, full table size <strong>7614 Kbytes</strong>.<br><br><input name="fulltable" onclick="window.open('/geo/query/acc.cgi?view=data&amp;acc=GPL98&amp;id=9694&amp;db=GeoDb_blob33', '_blank')" type="submit" value="View full table..."><br><br><br><input name="annotation" onclick="OpenFTP('ftp://ftp.ncbi.nlm.nih.gov/geo/platforms/GPLnnn/GPL98/annot/GPL98.annot.gz', '_blank')" type="submit" value="Annotation SOFT table..."><br><br><table cellspacing="3" width="600"><tr bgcolor="#eeeeee"><td><strong>Download family</strong></td>
+<td><strong>Format</strong></td>
+</tr>
+<tr><td><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/platforms/GPLnnn/GPL98/soft/" target="_blank">SOFT formatted family file(s)</a></td>
+<td>SOFT<a href="javascript:RPopUpWindow_Set(geoaxema_famsoft,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr>
+<tr><td><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/platforms/GPLnnn/GPL98/miniml/" target="_blank">MINiML formatted family file(s)</a></td>
+<td>MINiML<a href="javascript:RPopUpWindow_Set(geoaxema_famminiml,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr>
+</table>
+<br><table cellspacing="3" width="600"><tr bgcolor="#eeeeee"><td align="left"><strong>Supplementary data files not provided</strong></td></tr></table>
+<span id="customDlArea"></span><br></td></tr></table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" width="4" height="3" alt="" border="0"></td>
+    </tr>
+    <tr>
+        <td background="/coreweb/template1/pix/but_left.gif"><img src="/coreweb/template1/pix/but_left.gif" width="4" height="4" alt="" border="0"></td>
+        <td width="10000" bgcolor="#FFFFFF" background="/coreweb/template1/pix/but_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+        <td align="right" background="/coreweb/template1/pix/but_right.gif"><img src="/coreweb/template1/pix/but_right.gif" alt="" width="4" height="4" border="0"></td>
+    </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+        <td width="99%"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td><td valign="top" align="right"  nowrap>
+	        <span class="HELPBAR">|<A HREF="https://www.nlm.nih.gov"> NLM </A>|<A HREF="https://www.nih.gov" CLASS="HELPBAR"> NIH </A>|<A HREF="mailto:geo@ncbi.nlm.nih.gov" CLASS="HELPBAR"> GEO Help </A>|<A HREF="/geo/info/disclaimer.html" CLASS="HELPBAR"> Disclaimer </A>|<a href="https://www.nlm.nih.gov/accessibility.html" class="HELPBAR"> Accessibility </a>|</span><br>
+        </td>
+	</tr>
+</table>
+
+
+<map name="unlmenu">
+<area alt="NCBI Home" coords="2,0,39,15" href="/" onMouseOver="changpics(unl_menu_pix, unl_menu_home_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+<area alt="NCBI Search" coords="40,0,91,15" href="/ncbisearch/" onMouseOver="changpics(unl_menu_pix, unl_menu_search_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+<area alt="NCBI SiteMap" coords="92,0,143,15" href="/Sitemap/" onMouseOver="changpics(unl_menu_pix, unl_menu_sitemap_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+</map>
+
+<script type="text/javascript" 
+  src="/portal/portal3rc.fcgi/rlib/js/InstrumentNCBIBaseJS/InstrumentPageStarterJS.js"> </script>
+</body>
+</html>
+
+
